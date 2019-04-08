@@ -25,8 +25,10 @@ touch index.html //unix
 type null>index.html  //win
 echo null>index.html  //win
 ```
-### 
+### add track
 ```
 git status
 git add -A //add all
 ```
+
+![](./git_status_sequence.png)
