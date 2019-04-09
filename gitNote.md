@@ -53,9 +53,22 @@ echo "# project_name" >> README.md
 git init
 git add README.md
 git commit -m "first commit"
-git remote add origin git@github.com:wszwr003/project_name.git
+git remote add origin git@github.com:wszwr003/project_name.git   //git remote rm
 git push -u origin master
 ```
+#### 关于origin和master
+git的服务器端(remote)端包含多个repository，每个repository可以理解为一个项目。而每个repository下有多个branch。"origin"就是指向某一个repository的指针。服务器端的"master"（强调服务器端是因为本地端也有master）就是指向某个repository的一个branch的指针。
+![](./origin_master.png)
+```
+git push A B:C     
+```
+其中A和C是分别remote端的一个repository的名字和branch的名字，B是本地端branch的名字
+意思是把本地的B推送到remotes/A/C下。当B=C时可以直接省略为：git push A B。比如：
+```
+git push origin master:master //equals
+git push origin master
+```
+
 ### modify eg.
 ```
 [project_dir (master)]$ git diff
