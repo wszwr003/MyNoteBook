@@ -38,4 +38,6 @@ git commit -m //--message -a --all
 ### query latest commit message
 ```
 git log
+git log -p
 ```
+
