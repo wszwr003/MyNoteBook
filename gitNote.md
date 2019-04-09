@@ -25,10 +25,17 @@ touch index.html //unix
 type null>index.html  //win
 echo null>index.html  //win
 ```
-### query status&add track
+### query status&add track file
 ```
 git status
-git add -A //add all
+git add -A //add all --all
 ```
-
+### commit modify
+```
+git commit -m //--message -a --all
+```
 ![](./git_status_sequence.png)
+### query latest commit message
+```
+git log
+```
