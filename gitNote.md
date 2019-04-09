@@ -53,7 +53,7 @@ echo "# project_name" >> README.md
 git init
 git add README.md
 git commit -m "first commit"
-git remote add origin git@github.com:wszwr003/project_name.git   //git remote rm
+git remote add origin git@github.com:wszwr003/project_name.git   //git remote rm origin
 git push -u origin master
 ```
 #### 关于origin和master
