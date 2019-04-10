@@ -56,7 +56,7 @@ git commit -m "first commit"
 git remote add origin git@github.com:wszwr003/project_name.git   //git remote rm origin
 git push -u origin master
 ```
-#### 关于origin和master
+### 关于origin和master
 git的服务器端(remote)端包含多个repository，每个repository可以理解为一个项目。而每个repository下有多个branch。"origin"就是指向某一个repository的指针。服务器端的"master"（强调服务器端是因为本地端也有master）就是指向某个repository的一个branch的指针。
 ![](./origin_master.png)
 ```
@@ -93,6 +93,11 @@ master
 git branch -d about-page  //if merged
 git branch -D about-page  //even not merged
 ```
-
-
+### create tag
+```
+$ git tag -a v1.4-annotated -m 'my version 1.4'
+$ git tag v1.4-lightweight 
+$ git tag
+$ git show v1.4
+```
 
