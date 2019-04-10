@@ -34,4 +34,9 @@
 `F2`
 * rename all occure place
 `Ctrl+F2`
-
+* Firnatting 代码整理  
+all doc:`Shift+Alt+F`   
+selected:`Ctrl+k Ctrl+F`  
+* Fold&unFold  
+`Ctrl+Shift+[`  
+`Ctrl+Shift+]`
