@@ -40,3 +40,10 @@ selected:`Ctrl+k Ctrl+F`
 * Fold&unFold  
 `Ctrl+Shift+[`  
 `Ctrl+Shift+]`
+## Extension
+* ESLint before use  
+`npm install -g eslint `   
+`eslint --init `  
+`Disable ESLint`  
+* Markdown All in One
+PreView：`Ctrl+K V`
