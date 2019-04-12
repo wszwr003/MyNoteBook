@@ -1,5 +1,5 @@
 # Redis(remote dictionary service)
-[简述关系型数据库和非关系型数据库](https://www.jianshu.com/p/fd7b422d5f93)
+## [简述关系型数据库和非关系型数据库](https://www.jianshu.com/p/fd7b422d5f93)
 ## RDS 关系型数据库服务（Relational Database Service）
 Oracle,MySQL,SQLite
 ## NoSQL 非关系型数据库
