@@ -28,3 +28,7 @@ Inspector原理：
 ## [1-6 nodejs调试命令行参数](https://nodejs.org/en/docs/guides/debugging-getting-started/)
 * --inspect-brk  //直到attach上再运行程序，防止程序过快停止无法调试。
 * inspect //命令行调试
+
+# [Node.js debugging in VSCode 'launch.json'](https://code.visualstudio.com/docs/nodejs/nodejs-debugging)
+launch.json各种参数的定义
+
