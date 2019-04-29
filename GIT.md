@@ -100,4 +100,3 @@ $ git tag v1.4-lightweight
 $ git tag
 $ git show v1.4
 ```
-
