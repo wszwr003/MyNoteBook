@@ -35,7 +35,7 @@ git add -A //add all --all
 ```
 git commit -m //--message -a --all
 ```
-![](./git_status_sequence.png)
+![](./src/git_status_sequence.png)
 ### query latest commit message
 ```
 git log
@@ -58,7 +58,7 @@ git push -u origin master
 ```
 ### 关于origin和master
 git的服务器端(remote)端包含多个repository，每个repository可以理解为一个项目。而每个repository下有多个branch。"origin"就是指向某一个repository的指针。服务器端的"master"（强调服务器端是因为本地端也有master）就是指向某个repository的一个branch的指针。
-![](./origin_master.png)
+![](./src/origin_master.png)
 ```
 git push A B:C     
 ```
