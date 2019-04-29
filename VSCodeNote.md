@@ -7,6 +7,8 @@
 * extension             `Ctrl+Shift+X`
 * errors&warning    `Ctrl+Shift+M`
 * terminal  Ctrl+`
+## cmd open VSCode
+`code "document"`
 ## Editor ShortCut
 ### Muti-Cursor Editing
 * box select  
