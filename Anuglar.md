@@ -128,11 +128,12 @@ Angular 不会强迫你遵循这些原则。Angular 只会通过依赖注入来�
 和模板表达式一样，模板语句使用的语言也像 JavaScript。 模板语句解析器和模板表达式解析器有所不同，特别之处在于它支持基本赋值 (=) 和表达式链 (; 和 ,)。
 * **绑定语法：**
 
-    数据方向 | 语法 | 绑定类型
-    - | - | -
-    view-to-source | `(target)="statement"`<br>`on-target="statement"`|事件
-    source-to-view | `{{expression}}`<br>`[target]="expression"`<br>`bind-target="expression"`|插值<br>属性<br>Attribute<br>CSS<br>类样式
-    双向 | `[(target)]="expression"`<br>`bindon-target="expression"` | 双向
+    | 数据方向 | 语法 | 绑定类型 |
+    | - | - | - |
+    | view-to-source | `(target)="statement"`<br>`on-target="statement"` | 事件 |
+    | source-to-view | `{{expression}}`<br>`[target]="expression"`<br>`bind-target="expression"` | 插值<br>属性<br>Attribute<br>CSS<br>类样式 |
+    | 双向 | `[(target)]="expression"`<br>`bindon-target="expression"` | 双向 |
+
 ------
  **HTML attribute 与 DOM property 的对比:**
 attribute 初始化 DOM property，然后它们的任务就完成了。property 的值可以改变；attribute 的值不能改变。   
