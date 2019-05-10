@@ -135,11 +135,22 @@ Angular 不会强迫你遵循这些原则。Angular 只会通过依赖注入来�
     | 双向 | `[(target)]="expression"`<br>`bindon-target="expression"` | 双向 |
 
 ------
+
  **HTML attribute 与 DOM property 的对比:**
 attribute 初始化 DOM property，然后它们的任务就完成了。property 的值可以改变；attribute 的值不能改变。   
 添加或删除 disabled 这个 attribute 会禁用或启用这个按钮。但 attribute 的值无关紧要，这就是你为什么没法通过 `<button disabled="false">仍被禁用</button>` 这种写法来启用按钮。  
 设置按钮的 disabled 这个 property（如，通过 Angular 绑定）可以禁用或启用这个按钮。 这就是 property 的价值。  
 就算名字相同，HTML attribute 和 DOM property 也不是同一样东西。
-`在 Angular 的世界中，attribute 唯一的作用是用来初始化元素和指令的状态。 当进行数据绑定时，只是在与元素和指令的 property 和事件打交道，而 attribute 就完全靠边站了。`
+`在 Angular 的世界中，attribute 唯一的作用是用来初始化元素和指令的状态。 当进行数据绑定时，只是在与元素和指令的 property 和事件打交道，而 attribute 就完全靠边站了。`   
 
 ------
+
+* [**绑定目标：**](https://angular.cn/guide/template-syntax#binding-targets)
+    | 绑定类型 | 目标 | 范例 |
+    | - | - | - |
+    | Property | 元素的 property<br>组件的 property<br>指令的 property | <img [src]="heroImageUrl"><br><app-hero-detail [hero]="currentHero"></app-hero-detail><br><div [ngClass]="{'special': isSpecial}"></div> |
+    | 事件 | 元素的事件<br>组件的事件<br>指令的事件 | <button (click)="onSave()">Save</button><br><app-hero-detail (deleteRequest)="deleteHero()"></app-hero-detail><br><div (myClick)="clicked=$event" clickable>click me</div> |
+    | 双向 | 事件与 property | <input [(ngModel)]="name"> |
+    | Attribute | attribute（例外情况） | <button [attr.aria-label]="help">help</button> |
+    | CSS 类 | class property | <div [class.special]="isSpecial">Special</div> |
+    | 样式 | style property | <button [style.color]="isSpecial ? 'red' : 'green'">|    
