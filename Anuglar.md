@@ -154,3 +154,39 @@ attribute 初始化 DOM property，然后它们的任务就完成了。property 
     | Attribute | attribute（例外情况） | <button [attr.aria-label]="help">help</button> |
     | CSS 类 | class property | <div [class.special]="isSpecial">Special</div> |
     | 样式 | style property | <button [style.color]="isSpecial ? 'red' : 'green'">|    
+* **属性绑定:**  
+元素属性可能是最常见的绑定目标，但 Angular 会先去看这个名字是否是某个已知指令的属性名，就像下面的例子中一样：
+```html
+<div [ngClass]="classes">[ngClass] binding to the classes property</div>
+```
+模板表达式应该返回目标属性所需类型的值。 如果目标属性想要个字符串，就返回字符串。 如果目标属性想要个数字，就返回数字。 如果目标属性想要个对象，就返回对象。设置自定义组件的模型属性（这是父子组件之间通讯的重要途径）：
+```html
+<app-hero-detail [hero]="currentHero"></app-hero-detail>
+```
+* **attribution,class,style绑定：**
+```
+<!-- create and set an aria attribute for assistive technology -->
+<button [attr.aria-label]="actionName">{{actionName}} with Aria</button>
+<!-- reset/override all class names with a binding  -->
+<div class="bad curly special" [class]="badCurly">Bad curly</div>
+<!-- class toggle the "special" class on/off with a property -->
+<!-- class.name的时候比较特殊表达式是true/false来判断是否添加该类型 -->
+<div [class.special]="isSpecial">The class binding is special</div>
+<!-- styles -->
+<button [style.color]="isSpecial ? 'red': 'green'">Red</button>
+<button [style.background-color]="canSave ? 'cyan': 'grey'" >Save</button>
+<button [style.font-size.em]="isSpecial ? 3 : 1" >Big</button>
+<button [style.font-size.%]="!isSpecial ? 150 : 50" >Small</button>
+```
+* **事件绑定：**
+*    
+## 生命周期钩子 
+## 属性型指令
+* **指令概览:**
+指令分为三类，组件，属性指令和结构性指令
+组件（Component directive）：UI组件，继承于Directive；  
+属性指令（Attribute directive）：改变组件的样式；  
+结构指令（Structural directive）：改变DOM布局；  
+属性指令例如 ngClass  ngStyle  
+结构性指令 *ngIf\*ngFor\*ngSwitch  
+
