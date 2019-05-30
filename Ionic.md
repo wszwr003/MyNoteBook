@@ -74,3 +74,28 @@
 
  </ion-tabs>
 ```
+## [在安卓设备上调试app时无法正常打开：net::ERR_CLEARTEXT_NOT_PERMITTED](https://stackoverflow.com/questions/54752716/why-am-i-seeing-neterr-cleartext-not-permitted-errors-after-upgrading-to-cordo)
+* way1:
+```xml
+<!-- config.xml -->
+<platform name="android">
+  <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+      <application android:usesCleartextTraffic="true" />
+  </edit-config>
+</platform>
+```
+* way2：如果way1不行
+//resources/android/xml/network_security_config.xml 
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain>localhost</domain>
+        <domain>192.168.43.145</domain><!-- add -->
+    </domain-config>
+</network-security-config>
+```
+//config.xml //to fix The connection to the server was unsuccessful.
+```xml
+<preference name="loadUrlTimeoutValue" value="60000" /> <!-- add -->
+```
