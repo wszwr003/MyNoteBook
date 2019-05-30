@@ -181,6 +181,56 @@ attribute 初始化 DOM property，然后它们的任务就完成了。property 
 * **事件绑定：**
 *    
 ## 生命周期钩子 
+## 组件交互（父子）
+* 通过`@input`装饰器把数据从父组件传到子组件。
+  parent.html-->child.html
+* 通过 setter 截听输入属性值的变化
+  parent.html-->child.ts-->child.html
+    ```typescript
+    _allowDay: boolean;
+    get allowDay(): boolean {
+        return this._allowDay;
+    }
+
+    @Input('allowDay')
+    set allowDay(value: boolean) {
+        this._allowDay = value;
+        this.updatePeriodTypes();
+    }
+    ```
+* 通过ngOnChanges()来截听输入属性值的变化
+  parent.html-->child.ts-->child.html
+    ```typescript    
+    export class VersionChildComponent implements OnChanges {
+        @Input() major: number;
+        @Input() minor: number;
+        changeLog: string[] = [];
+        
+        ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
+            let log: string[] = [];
+            for (let propName in changes) {
+            let changedProp = changes[propName];
+            let to = JSON.stringify(changedProp.currentValue);
+            if (changedProp.isFirstChange()) {
+                log.push(`Initial value of ${propName} set to ${to}`);
+            } else {
+                let from = JSON.stringify(changedProp.previousValue);
+                log.push(`${propName} changed from ${from} to ${to}`);
+            }
+            }
+            this.changeLog.push(log.join(', '));
+        }
+    }
+    ```
+* 父组件监听子组件的事件@output EventEmitter
+  child.html-->parent.ts-->parent.html
+* 父组件与子组件通过本地变量互动
+  child.html-->#var-->parent.html
+  父组件不能使用数据绑定来读取子组件的属性或调用子组件的方法。但可以在父组件模板里，新建一个本地变量来代表子组件，然后利用这个变量来读取子组件的属性和调用子组件的方法
+  把本地变量(#timer)放到(<countdown-timer>)标签中，用来代表子组件。这样父组件的模板就得到了子组件的引用，于是可以在父组件的模板中访问子组件的所有属性和方法。
+* 父组件调用@ViewChild()
+  这个本地变量方法是个简单便利的方法。但是它也有局限性，因为父组件-子组件的连接必须全部在父组件的模板中进行。父组件本身的代码对子组件没有访问权。
+* 父组件和子组件通过服务来通讯
 ## 属性型指令
 * **指令概览:**
 指令分为三类，组件，属性指令和结构性指令
