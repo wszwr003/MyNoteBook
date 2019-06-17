@@ -44,6 +44,6 @@ close all instances of shell/cmd, reopen a cmd (regular this time, non-administr
 
 ## [添加了windows-build-tools后又出现了MSB8020err](https://github.com/brianmcd/contextify/issues/210)
 err:  
-error MSB8020: The builds tools for v140 (Platform T oolset = 'v140') cannot be found.  
+error MSB8020: The builds tools for v140 (Platform Toolset = 'v140') cannot be found.  
 解决：  
 I finally realized that if I execute `npm install` while inside of `the Developer Command Prompt for VS2015` that I'd have no issues finding the right build tools. When executing inside that context everything works perfectly.

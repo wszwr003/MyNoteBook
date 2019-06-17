@@ -99,3 +99,4 @@
 ```xml
 <preference name="loadUrlTimeoutValue" value="60000" /> <!-- add -->
 ```
+## [Ionic model/popover/page的使用及传递参数](https://www.youtube.com/watch?v=jRxPOs1OM34&list=PLMBoxY34XjTL_P7aKbwo_X_-8JXjWvNpl)
