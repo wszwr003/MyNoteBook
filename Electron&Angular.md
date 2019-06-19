@@ -1,5 +1,6 @@
-# [Build a Desktop Application with Angular and Electron](https://alligator.io/angular/electron/)
-# [Build a Desktop Application with Angular and Electron](https://medium.com/@yannmjl/how-to-build-native-cross-platform-desktop-apps-with-angular-electron-bd1d6e3919b2)
+# Build a Desktop Application with Angular and Electron
+[Angular and Electron 1](https://alligator.io/angular/electron/) |
+[Angular and Electron 2](https://medium.com/@yannmjl/how-to-build-native-cross-platform-desktop-apps-with-angular-electron-bd1d6e3919b2)
 ```javascript
 npm install -g @angular/cli@7.3.6
 ng new angular2electron --routing --style=scss

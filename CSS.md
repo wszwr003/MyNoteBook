@@ -1,19 +1,19 @@
 # CSS
 [CSS SELECTOR](http://www.w3school.com.cn/cssref/css_selectors.asp) |
 [CSS PROPERTY](http://www.w3school.com.cn/cssref/index.asp) 
-## css format
+## CSS Format  
 `select {property: value1,value2;}   `  
-### select use "," means or 
+### select use "," means or   
 ` select1,select2 {`   
       `property1: value1,value2;`  
       `property2: value2,value2;`  
 `}`
-### select use " " means if{ if{ } }
+### select use " " means if{ if{ } }  
 ` select1 select2 {`   
       `property1: value1,value2;`  
       `property2: value2,value2;`  
 `}`
-## styles
+## Styles
 ### background
 `p {background-color: gray;}`  
 `body {background-image: url(/i/eg_bg_04.gif);}` 

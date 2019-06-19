@@ -1,4 +1,4 @@
-##  [1.how to use **angular** ionic tabs](https://github.com/ionic-team/ionic/blob/master/CHANGELOG.md#angular-tabs)
+##  [how to use **angular** ionic tabs](https://github.com/ionic-team/ionic/blob/master/CHANGELOG.md#angular-tabs)
 ```diff
  import { RouterModule, Routes } from '@angular/router';
 
