@@ -24,7 +24,7 @@ your-app/
 ├── main.js //如果 main 字段没有在 package.json 中出现，那么 Electron 将会尝试加载 index.js 文件
 └── index.html   
 ```
-## [查看最小运行代码示例](https://electronjs.org/docs/tutorial/first-app#trying-this-example)
+## [electron官网最小运行代码示例](https://electronjs.org/docs/tutorial/first-app#trying-this-example)
 ## [查看example](https://github.com/electron/electron-quick-start)
 ## [npm i时卡在electron太慢](https://blog.csdn.net/qq_33699981/article/details/78516618)
 ## [electron-builder 卡在nsis-resource](https://segmentfault.com/q/1010000011726124/a-1020000011912627)
