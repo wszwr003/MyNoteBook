@@ -4,4 +4,3 @@
 * [x] 毒性软著、专利
 * [x] 微流控嘉兴课题结题报告
 * [x] angular、electron、ionic学习
-* [ ] 
