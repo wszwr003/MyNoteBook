@@ -1,5 +1,9 @@
 # GIT
 [Learn Enough Git to Be Dangerous](https://www.learnenough.com/git-tutorial?single_page=1#cha-1_footnote-4)
+## GitHub 添加 SSH keys
+```
+$ ssh-keygen -t rsa -C "whl7770@gmail.com" //一路回车//打开 id_rsa.pub，复制里面的key
+```
 ## locate git cmd
 ```
 where git //windows
@@ -100,3 +104,16 @@ $ git tag v1.4-lightweight
 $ git tag
 $ git show v1.4
 ```
+# .gitignore
+规则  作用  
+`/mtk`    过滤整个文件夹  
+`*.zip`   过滤所有.zip文件  
+`/mtk/do.c`   过滤某个具体文件  
+`!/mtk/one.txt`   追踪（不过滤）某个具体文件  
+注意：如果你创建.gitignore文件之前就push了某一文件，那么即使你在.gitignore文件中写入过滤该文件的规则，该规则也不会起作用，git仍然会对该文件进行版本管理。  
+配置语法  
+以斜杠“/”开头表示目录；  
+以星号“*”通配多个字符；  
+以问号“?”通配单个字符;  
+以方括号“[]”包含单个字符的匹配列表；  
+以叹号“!”表示不忽略(跟踪)匹配到的文件或目录。  
