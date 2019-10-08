@@ -5,6 +5,8 @@
     Hibernate: 对jdbc封装得最彻底的框架,纯面向对象,可以不用写SQL   
 *  [Node ORM: sequelize ](https://www.cnblogs.com/y-yxh/p/6005729.html)
 *  SSR:SERVER SIDE RENDER
+*  HTTPS(Hyper Text Transfer Protocol over Secure Socket Layer)
+*  SSL(Secure Socket Layer)
 *  [angular2-chartjs use github](https://github.com/emn178/angular2-chartjs)
     1. `npm install --save angular2-chartjs`
     2.   
