@@ -117,3 +117,10 @@ $ git show v1.4
 以问号“?”通配单个字符;  
 以方括号“[]”包含单个字符的匹配列表；  
 以叹号“!”表示不忽略(跟踪)匹配到的文件或目录。  
+
+## ??remote: No anonymous write access. fatal: Authentication failed
+解决：通过https-->git暂时解决
+```
+git remote -v
+git remote set-url origin git@github.com:wszwr003/MyNoteBook.git
+```
