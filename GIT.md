@@ -2,9 +2,9 @@
 [Learn Enough Git to Be Dangerous](https://www.learnenough.com/git-tutorial?single_page=1#cha-1_footnote-4)
 ## GitHub 添加 SSH keys
 ```
-$ ssh-keygen -t rsa -C "whl7770@gmail.com" //一路回车//打开 id_rsa.pub，复制里面的key
+$ ssh-keygen -t rsa -C "whl7770@gmail.com" //一路回车//打开!!!! id_rsa.pub，复制里面的key
 ```
-## locate git cmd
+## locate git cmd      
 ```
 where git //windows
 which git //unix
