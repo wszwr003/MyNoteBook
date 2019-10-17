@@ -2,9 +2,9 @@
 [Learn Enough Git to Be Dangerous](https://www.learnenough.com/git-tutorial?single_page=1#cha-1_footnote-4)
 ## GitHub 添加 SSH keys
 ```
-$ ssh-keygen -t rsa -C "whl7770@gmail.com" //一路回车//打开 id_rsa.pub，复制里面的key
+$ ssh-keygen -t rsa -C "whl7770@gmail.com" //一路回车//打开!!!! id_rsa.pub，复制里面的key
 ```
-## locate git cmd
+## locate git cmd      
 ```
 where git //windows
 which git //unix
@@ -117,3 +117,10 @@ $ git show v1.4
 以问号“?”通配单个字符;  
 以方括号“[]”包含单个字符的匹配列表；  
 以叹号“!”表示不忽略(跟踪)匹配到的文件或目录。  
+
+## ??remote: No anonymous write access. fatal: Authentication failed
+解决：通过https-->git暂时解决
+```
+git remote -v
+git remote set-url origin git@github.com:wszwr003/MyNoteBook.git
+```
