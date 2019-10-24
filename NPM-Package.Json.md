@@ -13,3 +13,4 @@
 `npm ls -g` //查看所有全局安装的模块   
 `npm config ls`  //查看npm默认设置（部分）  
 `npm config ls -l`  //查看npm默认设置（全部）   
+`npm list --depth=0 -global`
