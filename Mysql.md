@@ -19,7 +19,6 @@ mysqlslap -hlocalhost -uroot -p85021687 -P3306
 ## 传统架构SSH,SSI
 ## 微服务架构
 ![微服务系统架构方案](./src/系统架构方案.png)
-
 # [数据库设计范式(normal format)](https://www.zhihu.com/question/24696366)
 1NF,2NF,3NF,BCNF,4NF,5NF
 # [连接池](https://blog.csdn.net/tototuzuoquan/article/details/78573955)
