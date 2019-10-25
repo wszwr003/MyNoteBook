@@ -46,10 +46,7 @@ Node 的交互式解释器可以很好的调试 Javascript 代码。
         ```html
         //html
         <chart [type]="type" [data]="data" [options]="options"></chart>
-        ```
-*  busybox   
-`$ docker run -it --rm busybox`   
-`$ docker start -ai 9833283cd6fa`  
+        ``` 
 *  正向代理和反向代理
 正向代理：是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。
 正向代理的用途：
