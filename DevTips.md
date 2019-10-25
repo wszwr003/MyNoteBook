@@ -60,3 +60,9 @@ Node 的交互式解释器可以很好的调试 Javascript 代码。
    （1）保证内网的安全，可以使用反向代理提供WAF功能，阻止web攻击大型网站，通常将反向代理作为公网访问地址，Web服务器是内网。
    （2）负载均衡，通过反向代理服务器来优化网站的负载
 *  Nginx和Haproxy(Load Balancer)
+*  wget和curl
+想快速下载并且没有担心参数标识的需求，可以使用轻便有效的 wget。  
+cURL 支持你做很多事情。你可以把 cURL 想象成一个精简的命令行网页浏览器。它支持几乎你能想到的所有协议，可以交互访问几乎所有在线内容。唯一和浏览器不同的是，cURL 不会渲染接收到的相应信息。
+*   查询监听端口
+MAC:`netstat -AaLlnW`  
+linux:`netstat -nlp | grep LISTEN`
