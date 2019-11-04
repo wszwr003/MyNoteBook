@@ -47,7 +47,7 @@ The tool zip is mainly used in Windows , but is also available for Linux-based o
 * Show all files of an archive:  
 `unzip -l archive.zip`
 
-# 查看linux系统版本
+## 查看linux系统版本
 查看内核版本:  
 `uname -a;`   
 `cat /proc/version;`  
@@ -55,6 +55,8 @@ The tool zip is mainly used in Windows , but is also available for Linux-based o
 `cat /etc/issue;`  
 `lsb_release -a;`  
 `cat /etc/redhat-release;`  
-# 查看linux运行线程pid及关闭线程
+## 查看linux运行线程pid及关闭线程
 `ps -h`  
 `kill "pid"`
+## 批量删除相似文件
+`rm -rf name{1..200}name`  
