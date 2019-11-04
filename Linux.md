@@ -36,7 +36,6 @@ Result: file.bz2
 Result: archive.tar.bz2  
 * Decompress and extract an archive:  
 `tar xfvj archive.tar.bz2`  
-
 ## zip  
 The tool zip is mainly used in Windows , but is also available for Linux-based operating systems.  
 * Combining individual files in a compressed archive:  
@@ -47,3 +46,15 @@ The tool zip is mainly used in Windows , but is also available for Linux-based o
 `unzip archive.zip`  
 * Show all files of an archive:  
 `unzip -l archive.zip`
+
+# 查看linux系统版本
+查看内核版本:  
+`uname -a;`   
+`cat /proc/version;`  
+查看发行版本:  
+`cat /etc/issue;`  
+`lsb_release -a;`  
+`cat /etc/redhat-release;`  
+# 查看linux运行线程pid及关闭线程
+`ps -h`  
+`kill "pid"`
