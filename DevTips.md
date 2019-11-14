@@ -1,3 +1,4 @@
+* [Web Developer RoadMap](https://github.com/kamranahmedse/developer-roadmap)
 *  ORM:对象关系映射(Object Relational Mapping)
 *  JDBC ORMs:  
     dbutils: 是对jdbc进行了相对简单的包装, 需要在代码中写sql语句  
@@ -66,3 +67,18 @@ cURL 支持你做很多事情。你可以把 cURL 想象成一个精简的命令
 *   查询监听端口
 MAC:`netstat -AaLlnW`  
 linux:`netstat -nlp | grep LISTEN`
+* [软件设计原则(principle)](https://github.com/kamranahmedse/developer-roadmap)  
+  * [SOLID](https://learnku.com/articles/4160/solid-notes-on-object-oriented-design-and-programming-oodoop)  
+
+    Name | 名称 | 概念  
+    - | - | -  
+    S-SRP(Single Responsibility Principle)|单一功能原则|对象应该仅具有一种单一功能
+    O-OCP(Opened Closed Principle)|开闭原则|软件应该是对于扩展开放的，但对于修改封闭的
+    L-LSP(Liskov Substitution Principle)|里氏替换原则|程序中的对象应该是可以在不改变程序正确性的前提下被他的子类所替换
+    I-ISP(Interface Segregation Principle)|接口隔离原则|多个特定客户端接口要好于一个宽泛用途的接口
+    D-DIP(Dependency Inversion Principle)|依赖反转原则|一个方法应该遵从「依赖于抽象而不是一个实例」  
+  * [DRY-Don't Repeat Yourself](https://blog.csdn.net/yuanlaijike/article/details/101565)  
+  * KISS-Keep It Simple & Stupid  
+  * YAGNI-You Ain't Gonna Need It  
+* OWASP-Open Web Application Security Project  
+  开放式Web应用程序安全项目  

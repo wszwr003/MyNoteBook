@@ -24,3 +24,5 @@ best learn rate!
 ## First Steps with TF  
 ![TensorFlow toolkit hierarchy!](./src/tf-hierarchy.png)
 ### TF Progarmming Exercise
+* pandas  
+是一种数据分析a
