@@ -59,3 +59,7 @@ The tool zip is mainly used in Windows , but is also available for Linux-based o
 `kill "pid"`
 # 批量删除相似文件
 `rm -rf name{1..200}name`  
+# centos 安装samba
+`rpm –qi samba`  
+`yum remove –y samba`  
+`yum -y install samba samba-client`  

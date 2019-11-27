@@ -25,4 +25,50 @@ best learn rate!
 ![TensorFlow toolkit hierarchy!](./src/tf-hierarchy.png)
 ### TF Progarmming Exercise
 * pandas  
-是一种数据分析a
+    是一种数据分析API  
+    ```python
+    from __future__ import print_function
+    import pandas as pd
+    import numpy as np
+    pd.__version__
+
+    california_housing_dataframe = pd.read_csv("https://download.mlcc.google.cn/mledu-datasets/california_housing_train.csv", sep=",")
+    california_housing_dataframe.describe()
+    california_housing_dataframe.head()
+    california_housing_dataframe.hist('housing_median_age')
+
+    city_names = pd.Series(['San Francisco', 'San Jose', 'Sacramento'])
+    population = pd.Series([852469, 1015785, 485199])
+    citys = pd.DataFrame({ 'City name': city_names, 'Population': population})
+    print(type(cities['City name']))
+    cities['City name']
+    population / 1000.
+    np.log(population)
+    population.apply(lambda val: val > 1000000)
+    ```
+* first steps with tensorflow  
+```python
+from __future__ import print_function
+import math
+from IPython import display
+from matplotlib import cm
+from matplotlib import gridspec
+from matplotlib import pyplot as plt
+import numpy as np
+import pandas as pd
+from sklearn import metrics
+%tensorflow_version 1.x
+import tensorflow as tf
+from tensorflow.python.data import Dataset
+
+tf.logging.set_verbosity(tf.logging.ERROR)
+pd.options.display.max_rows = 10
+pd.options.display.float_format = '{:.1f}'.format
+
+california_housing_dataframe = pd.read_csv("https://download.mlcc.google.cn/mledu-datasets/california_housing_train.csv", sep=",")
+
+california_housing_dataframe = california_housing_dataframe.reindex(np.random.permutation(california_housing_dataframe.index))
+california_housing_dataframe["median_house_value"] /= 1000.0
+california_housing_dataframe
+california_housing_dataframe.describe()
+```

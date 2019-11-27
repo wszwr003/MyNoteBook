@@ -1,5 +1,12 @@
+
 # [RXJS 基本](https://rxjs.dev/guide/overview)
-* **RXJS是用可观察序列组成异步和基于事件的程序的库。**
+* **RXJS是用可观察序列组成异步和基于事件的程序的库。**  
+
+\ | SINGLE | MULTIPLE
+ - | - | -
+ PULL | Funtcion | Iterator
+ PUSH | Promise  | Observable  
+ 
 ## 基本概念：
     1. 可观察对象（observable）：表示一组在未来可以调用的值和事件的集合。
     2. 观察者（observer）：表示一组监听可观察对象传递的值的回调。
