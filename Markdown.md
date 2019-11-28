@@ -47,11 +47,11 @@ ___~~斜粗体删除线~~___
 * [x] Markdown  
 * [ ] Markdown 
 
- Name | sex | age
- - | - | -
- Name1 | 男 | 90
- Name2 | 男 | 100
- Name3 | 女 | 90
+ | Name  | sex | age |
+ | ----- | --- | --- |
+ | Name1 | 男  | 90  |
+ | Name2 | 男  | 100 |
+ | Name3 | 女  | 90  |
 
 X<sub>2<sub>  
 

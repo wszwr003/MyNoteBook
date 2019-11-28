@@ -29,8 +29,7 @@
 `.img-circle`  
 `带有边框的圆角图：.img-thumbnail`  
 * **viewport**
-* 响应式栅格布局：
-
+* 响应式栅格布局：  
 
 
 

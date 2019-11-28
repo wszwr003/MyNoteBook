@@ -10,7 +10,6 @@ npm install --save-dev electron@latest
 npm install --save-dev electron-packager@latest
 ```
 ## [编译ng项目并进行精简electron打包]([https://link](https://stackoverflow.com/questions/49643270/angular-5-with-electron-packager))
-
 * step1:   
   `ng new project`
 * setp2:   
