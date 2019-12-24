@@ -1,4 +1,7 @@
-# [需求文件](http://rmblog.accompa.com/2012/04/requirements-document-types/)
+# [Technical Documentation in Software Development](https://www.altexsoft.com/blog/business/technical-documentation-in-software-development-types-best-practices-and-tools/)  
+
+
+## [需求文件](http://rmblog.accompa.com/2012/04/requirements-document-types/)
 [6 Different Types of Requirements Documentation](https://ezinearticles.com/?6-Different-Types-of-Requirements-Documentation&id=7216437)  
 BRD  
 MRD  
@@ -6,8 +9,7 @@ FRD         PRD     SRS    CRD     ITRD
 NFRD/QRD    PRD     SRS    CRD     ITRD  
 UIRD  
 TRD  
-
-#  总结：
+###  总结：
 1. BRD [Business requirements Document]  
 high-level business goals, Usually provided as a single page of high-level bullets.  
 2. MRD [Market Requirements Document]  
