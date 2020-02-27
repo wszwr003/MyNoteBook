@@ -40,19 +40,16 @@
     ```
     * providers:服务提供商
 ### 1.1 *ngFor  
-* Template File(.html):
-  ```ts
-  //wewew
-  ```
-    ```html
-    <div *ngFor="let product of products">
-        <h3>
-            {{product.name}}
-        </h3>
-    </div>
-    ```
+* Template File(.html)
+```html
+<div *ngFor="let product of products">
+    <h3>
+        {{product.name}}
+    </h3>
+</div>
+```
 ### 1.2 *ngIf  
-* Template File(.html):
+* Template File(.html)
 ```html
 <p *ngIf="product.description"> //TOSOLVE:判断条件的细节和语法学习    
 </p>
@@ -130,7 +127,6 @@ export class ProductAlertsComponent implements OnInit {
 * 接收组件(TOSOLVE:父组件?)
 ```ts
 import { Component, OnInit } from "@angular/core";
-import { Output, EventEmitter } from "@angular/core";
 @Component({
   selector: "app-product-alerts",
   template: `
