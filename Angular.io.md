@@ -155,7 +155,6 @@ const routes: Routes = [/*set routes*/];
 })
 export class AppRoutingModule { }
 ```
----
 * 根模块
 ```ts
 //app.module.ts//导入路由模块的根模块
@@ -179,10 +178,9 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 })
 export class AppModule { }
 ```
----
-
+* 根组件
 ```ts
-//app.component.ts//根组件
+//app.component.ts
 import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
@@ -198,7 +196,7 @@ export class AppComponent  {}
   <router-outlet></router-outlet>     <!--routing-->
 </div>
 ```
----
+* topBar组件
 ```ts
 //top-bar.component.ts
 import { Component, OnInit } from '@angular/core';
@@ -222,4 +220,3 @@ export class TopBarComponent implements OnInit {
   Checkout
 </a>
 ```
----
