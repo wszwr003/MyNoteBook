@@ -147,7 +147,12 @@ export class ProductComponent implements OnInit {
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [/*set routes*/];
+const routes: Routes = [
+  //localhost:port
+  { path: '', component: ProductListComponent },
+  //localhost:port/products/productId
+  { path: 'products/:productId', component: ProductDetailsComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
@@ -196,6 +201,18 @@ export class AppComponent  {}
   <router-outlet></router-outlet>     <!--routing-->
 </div>
 ```
+* fatherTemplate of Routing
+```html
+<!--product-list.component.html-->
+<!--父路由模板写法-->
+<div *ngFor="let product of products; index as productId">
+  <h3>
+    <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
+      {{ product.name }}
+    </a>
+  </h3>
+</div>
+```
 * topBar组件
 ```ts
 //top-bar.component.ts
@@ -219,4 +236,34 @@ export class TopBarComponent implements OnInit {
   <i class="material-icons">shopping_cart</i>
   Checkout
 </a>
+```
+* ProductDetailComponent
+childRoutesComponent的复用(针对相似的页面如不同商品的详情页面).通过导入ActivatedRoute模块并注入此模块,订阅其paraMap服务以获取当前路由的相关数据.
+The ActivatedRoute is specific to each routed component that the Angular Router loads. It contains information about the route, its parameters, and additional data associated with the route.
+```ts
+//product-details.component.ts
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { products } from '../products';
+
+export class ProductDetailsComponent implements OnInit {
+  product;
+  constructor(
+    private route: ActivatedRoute,
+  ) { }
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.product = products[+params.get('productId')];
+    });
+  }
+}
+```
+```html
+<!--product-details.component.html-->
+<h2>Product Details</h2>
+<div *ngIf="product">
+  <h3>{{ product.name }}</h3>
+  <h4>{{ product.price | currency }}</h4>
+  <p>{{ product.description }}</p>
+</div>
 ```
