@@ -141,7 +141,7 @@ export class ProductComponent implements OnInit {
 }
 ```
 ### 1.8 Routing(顺带topBar)
-* registering a route
+* 路由模块
 ```ts
 //app-routing.module.ts//路由模块代码
 import { NgModule } from '@angular/core';
@@ -156,6 +156,7 @@ const routes: Routes = [/*set routes*/];
 export class AppRoutingModule { }
 ```
 ---
+* 根模块
 ```ts
 //app.module.ts//导入路由模块的根模块
 import { NgModule } from '@angular/core';
@@ -179,8 +180,9 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 export class AppModule { }
 ```
 ---
+
 ```ts
-//app.component.ts//根模块
+//app.component.ts//根组件
 import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
