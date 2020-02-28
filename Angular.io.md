@@ -237,8 +237,8 @@ export class TopBarComponent implements OnInit {
   Checkout
 </a>
 ```
-* ProductDetailComponent
-childRoutesComponent的复用(针对相似的页面如不同商品的详情页面).通过导入ActivatedRoute模块并注入此模块,订阅其paraMap服务以获取当前路由的相关数据.
+* ProductDetailComponent   
+childRoutesComponent的复用(针对相似的页面如不同商品的详情页面).通过导入ActivatedRoute模块并注入此模块,订阅其paraMap服务以获取当前路由的相关数据.  
 The ActivatedRoute is specific to each routed component that the Angular Router loads. It contains information about the route, its parameters, and additional data associated with the route.
 ```ts
 //product-details.component.ts
