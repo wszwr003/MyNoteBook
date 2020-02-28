@@ -131,7 +131,7 @@ import { Component, OnInit } from "@angular/core";
 @Component({
   selector: "app-product",
   template: `
-	<app-alerts (notify)="onNotify()"></app-alerts>         <!--father template-->
+  <app-alerts (notify)="onNotify()"></app-alerts>         <!--father template-->
 `
 })
 export class ProductComponent implements OnInit {
