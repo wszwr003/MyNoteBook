@@ -77,6 +77,8 @@
 </button>
 ```
 ### 1.6 Input
+*inpute数据流转:*fatherComponent(.ts)->fatherTemplate(html)->childComponent->childTemplate  
+*编程最佳流程:*fatherComponent->childComponent->childTemplate->fatherTemplate 
 * Input组件(子组件?)
 ```ts
 //需要input属性的组件
@@ -110,6 +112,8 @@ export class ProductComponent {
 }
 ```
 ### 1.7 Output
+*Outpute数据流转:*childTemplate->childComponent->fatherTemplate->fatherComponent
+*编程最佳流程(?TOSOLVE):*
 * Output组件(子组件)
 ```ts
 import { Component, OnInit } from "@angular/core";
@@ -140,5 +144,6 @@ export class ProductAlertsComponent implements OnInit {
   }
 }
 ```
-### 
+### Routing
+
 
