@@ -56,7 +56,7 @@
 <p *ngIf="product.price > 700">	
 </p>
 ```
-### 1.3 InterPolation: {{ }} 
+### 1.3 InterPolation: {{ statement }} 
 差值符:花括号纸巾通常是组件的属性(.ts文件)的名字.默认情况下
 ```html
 <p>
@@ -83,17 +83,15 @@
 ```ts
 //需要input属性的组件
 import { Component, OnInit } from '@angular/core';
-import { Input } from "@angular/core"
+import { Input } from "@angular/core"                     //input component
 @Component({
-selector: 'app-product-title',
+selector: 'app-title',
 template: `
-    <h1>{{ product.name }}</h1>
+  <h1>{{ product.name }}</h1>                             <!--input template-->
 `
 })
-export class ProductTitleComponent {
-    @Input() product;
-    constructor() {}
-    ngOnInit() {}
+export class TitleComponent {
+    @Input() product;                                     //input component
 }
 ```  
 * 源组件(TOSOLVE:父组件?)
@@ -103,12 +101,11 @@ import { Component, OnInit } from '@angular/core';
 @Component({
 selector: 'app-product',
 template: `
-    <app-product-title [product]="product">  
-	</app-product-title>
+  <app-title [product]="product"></app--title>            <!--father template-->
 `
 })
 export class ProductComponent {
-    product = "product1";
+    product = "product1";                                 //father component
 }
 ```
 ### 1.7 Output
@@ -117,33 +114,33 @@ export class ProductComponent {
 * Output组件(子组件)
 ```ts
 import { Component, OnInit } from "@angular/core";
-import { Output, EventEmitter } from "@angular/core";
+import { Output, EventEmitter } from "@angular/core";     //output component
 @Component({
-  selector: "app-product-alerts",
+  selector: "app-alerts",
   template: `
-    <button (click)="notify.emit()">Notify</button>
+  <button (click)="notify.emit()">Notify</button>         <!--output template-->
 `
 })
-export class ProductAlertsComponent implements OnInit {
-  @Output() notify = new EventEmitter();
+export class AlertsComponent implements OnInit {
+  @Output() notify = new EventEmitter();                  //output component
 }
 ```
 * 接收组件(TOSOLVE:父组件?)
 ```ts
 import { Component, OnInit } from "@angular/core";
 @Component({
-  selector: "app-product-alerts",
+  selector: "app-product",
   template: `
-	<app-product-alerts (notify)="onNotify()">
-	</app-product-alerts>
+	<app-alerts (notify)="onNotify()"></app-alerts>         <!--father template-->
 `
 })
-export class ProductAlertsComponent implements OnInit {
-  onNotify() {
+export class ProductComponent implements OnInit {
+  onNotify() {                                            //father component
     window.alert("this is an alert!!");
   }
 }
 ```
-### Routing
+### Routing  
+
 
 
