@@ -140,7 +140,60 @@ export class ProductComponent implements OnInit {
   }
 }
 ```
-### Routing  
+### 1.8 Routing(顺带topBar)
+* registering a route
+```ts
+//app-routing.module.ts//路由模块代码
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+const routes: Routes = [/*set routes*/];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+```
+```ts
+//app.module.ts//导入路由模块的根模块
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+
+import { AppComponent } from './app.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
+@NgModule({
+  declarations: [
+    AppComponent,                     //declare AppComponent
+    TopBarComponent                   //declare TopBarComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]           //set AppComponent as root component
+})
+export class AppModule { }
+```
+```ts
+//app.component.ts//根模块
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: [ './app.component.css' ]
+})
+export class AppComponent  {}
+```
+```html
+<!--app.component.html--><!--具有路由功能和topBar功能的根模板-->
+<app-top-bar></app-top-bar>           <!--top bar-->
+<div class="container">
+  <router-outlet></router-outlet>     <!--routing-->
+</div>
+```
 
 
 
