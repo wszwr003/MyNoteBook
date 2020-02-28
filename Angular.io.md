@@ -112,7 +112,7 @@ export class ProductComponent {
 }
 ```
 ### 1.7 Output
-**Outpute数据流转:** childTemplate->childComponent->fatherTemplate->fatherComponent
+**Outpute数据流转:** childTemplate->childComponent->fatherTemplate->fatherComponent  
 **编程最佳流程(?TOSOLVE):** 
 * Output组件(子组件)
 ```ts
