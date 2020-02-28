@@ -155,6 +155,7 @@ const routes: Routes = [/*set routes*/];
 })
 export class AppRoutingModule { }
 ```
+---
 ```ts
 //app.module.ts//导入路由模块的根模块
 import { NgModule } from '@angular/core';
@@ -177,6 +178,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 })
 export class AppModule { }
 ```
+---
 ```ts
 //app.component.ts//根模块
 import { Component } from '@angular/core';
@@ -194,6 +196,28 @@ export class AppComponent  {}
   <router-outlet></router-outlet>     <!--routing-->
 </div>
 ```
-
-
-
+---
+```ts
+//top-bar.component.ts
+import { Component, OnInit } from '@angular/core';
+@Component({
+  selector: 'app-top-bar',
+  templateUrl: './top-bar.component.html',
+  styleUrls: ['./top-bar.component.css']
+})
+export class TopBarComponent implements OnInit {
+  constructor() { }
+  ngOnInit() { }
+}
+```
+```html
+<!--top-bar.component.html-->
+<a [routerLink]="['/']">
+  <h1>My Store</h1>
+</a>
+<a [routerLink]="['/cart']" class="button fancy-button">
+  <i class="material-icons">shopping_cart</i>
+  Checkout
+</a>
+```
+---
