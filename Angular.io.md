@@ -267,3 +267,8 @@ export class ProductDetailsComponent implements OnInit {
   <p>{{ product.description }}</p>
 </div>
 ```
+### 1.9 Managing Data
+### 1.10 Forms
+### 1.11 Deployment
+
+### 1.12 AngularCLI
