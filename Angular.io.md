@@ -1,5 +1,5 @@
 # [Introduction to the Angular Docs](https://angular.io/docs)
-## 1 Getting Started
+# [1 Getting Started](https://angular.io/start)
 * 名词解释 
   * 组件:被@component装饰器修饰的ts文件为一个组件,紧随其后的那个类就是组件类,否则就是一个普通类.
   * 模板:HTML模板文件
@@ -39,7 +39,7 @@
     }
     ```
     * providers:服务提供商
-### 1.1 *ngFor  
+## 1.1 *ngFor  
 * Template File(.html)
 ```html
 <div *ngFor="let product of products">
@@ -48,7 +48,7 @@
     </h3>
 </div>
 ```
-### 1.2 *ngIf  
+## 1.2 *ngIf  
 * Template File(.html)
 ```html
 <p *ngIf="product.description"> //TOSOLVE:判断条件的细节和语法学习    
@@ -56,7 +56,7 @@
 <p *ngIf="product.price > 700">	
 </p>
 ```
-### 1.3 InterPolation: {{ statement }} 
+## 1.3 InterPolation: {{ statement }} 
 差值符:花括号纸巾通常是组件的属性(.ts文件)的名字.默认情况下
 ```html
 <p>
@@ -66,17 +66,17 @@
     <img src="{{ itemImageUrl }}">
 </div>
 ```
-### 1.4 Property binding: [property]="statement" 
+## 1.4 Property binding: [property]="statement" 
 ```html
 <img [src]="itemImageUrl">
 ```
-### 1.5 Event binding: (event)="statement/MostTimeIsFunction"  
+## 1.5 Event binding: (event)="statement/MostTimeIsFunction"  
 ```html
 <button (click)="share()">
     button_name
 </button>
 ```
-### 1.6 Input
+## 1.6 Input
 **inpute数据流转:** fatherComponent(.ts)->fatherTemplate(html)->childComponent->childTemplate  
 **编程最佳流程:** fatherComponent->childComponent->childTemplate->fatherTemplate 
 * Input组件(子组件?)
@@ -108,7 +108,7 @@ export class ProductComponent {
     product = "product1";                                 //father component
 }
 ```
-### 1.7 Output
+## 1.7 Output
 **Outpute数据流转:** childTemplate->childComponent->fatherTemplate->fatherComponent  
 **编程最佳流程(?TOSOLVE):** 
 * Output组件(子组件)
@@ -140,7 +140,7 @@ export class ProductComponent implements OnInit {
   }
 }
 ```
-### 1.8 Routing(顺带topBar)
+## 1.8 Routing(顺带Material topBar)
 * 路由模块
 ```ts
 //app-routing.module.ts//路由模块代码
@@ -267,8 +267,95 @@ export class ProductDetailsComponent implements OnInit {
   <p>{{ product.description }}</p>
 </div>
 ```
-### 1.9 Managing Data
-### 1.10 Forms
-### 1.11 Deployment
+## 1.9 Managing Data
+## 1.10 Forms
+## 1.11 Deployment
+# [2 Click and Enter Event](https://angular.io/guide/user-input)
+* button click event with no parametre
+```ts
+import { Component } from '@angular/core';
 
-### 1.12 AngularCLI
+@Component({
+  selector: 'app-click-me',
+  template: `
+    <button (click)="onClickMe()">Click me!</button>
+    {{clickMessage}}`
+})
+export class ClickMeComponent {
+  clickMessage = '';
+
+  onClickMe() {
+    this.clickMessage = 'You are my hero!';
+  }
+}
+```
+* input keyup event with parametre $event
+```ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-key-up',
+  template: `
+    <input (keyup)="onKey($event)">  
+    <p>{{values}}</p>
+  `
+})
+export class KeyUpComponent {
+  values = '';
+  /*
+  onKey(event: any) { // without type info //不好!编程时不能获得参数提示
+    this.values += event.target.value + ' | ';
+  }
+  */
+  onKey(event: KeyboardEvent) { // with type info //好!编程时可以获得参数提示
+    this.values += (event.target as HTMLInputElement).value + ' | ';
+  }
+}
+```
+* input keyup event with template reference variable(模板引用变量)
+```ts
+@Component({
+  selector: 'app-loop-back',
+  //只有应用程序发生了异步事件,Angular才会更新绑定(UI)
+  //本代码将0绑定到keyup事件,虽然什么也没做但是满足了Angular要求,所以会更新UI.
+  template: `
+    <input #box (keyup)="0">
+    <p>{{box.value}}</p>
+  `
+})
+export class LoopbackComponent { }
+```
+```ts
+@Component({
+  selector: 'app-key-up',
+  //模板引用变量作为事件参数.
+  template: `
+    <input #box (keyup)="onKey(box.value)">
+    <p>{{values}}</p>
+  `
+})
+export class KeyUpComponent {
+  values = '';
+  onKey(value: string) {
+    this.values += value + ' | ';
+  }
+}
+```
+* 按键事件过滤/失去焦点事件
+```ts
+@Component({
+  selector: 'app-key-up',
+  //仅仅绑定回车键/blur为失去焦点事件
+  template: `
+    <input #box
+      (keyup.enter)="update(box.value)"
+      (blur)="update(box.value)">
+
+    <p>{{value}}</p>
+  `
+})
+export class KeyUpComponent {
+  value = '';
+  update(value: string) { this.value = value; }
+}
+```
