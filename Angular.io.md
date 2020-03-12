@@ -56,8 +56,8 @@
 <p *ngIf="product.price > 700">	
 </p>
 ```
-## 1.3 InterPolation: {{ statement }} 
-差值符:花括号纸巾通常是组件的属性(.ts文件)的名字.默认情况下
+## 1.3 Interpolation: {{ statement }} 
+插值符:花括号纸巾通常是组件的属性(.ts文件)的名字.默认情况下
 ```html
 <p>
     title:{{ title }}
