@@ -1,3 +1,65 @@
+# [92. 反转链表 II](https://leetcode-cn.com/problems/reverse-linked-list-ii/)
+## 方法一、迭代(自写)
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode* reverseBetween(struct ListNode* head, int m, int n){
+    struct ListNode* reverseHead = head;  //reverse以后链表头
+    struct ListNode* prevReverse = NULL;  //第一个交换节点的前一个
+    struct ListNode* currReverse = head;  //第一个交换节点
+    struct ListNode* prev = NULL;         //当前节点的前一个节点
+    struct ListNode* curr = NULL;         //当前节点
+
+    if(m==n)
+        return head;
+    for(int i=0;i<m-1;i++){               //循环到交换节点
+        prevReverse = currReverse;
+        currReverse = currReverse->next;
+    }
+    curr = currReverse;                   
+    for(int i=0;i<n-m+1;i++){
+        struct ListNode* temp = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = temp; //FAO curr = temp->next;
+    }
+    if(m==1)
+        reverseHead = prev;
+    else
+        prevReverse->next = prev;
+    currReverse->next = curr;
+    return  reverseHead;
+}
+```
+## 方法二、递归
+# [206. 反转链表](https://leetcode-cn.com/problems/reverse-linked-list/)
+## 方法一、迭代(自写)
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode* reverseList(struct ListNode* head){
+    struct ListNode *prev = NULL;
+    struct ListNode *curr = head;
+    while(curr != NULL){
+        struct ListNode *temp = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = temp;
+    }
+    return prev;
+}
+```
+## 方法二、递归
 # [322.零钱兑换](https://leetcode-cn.com/problems/coin-change/)
 
 ## 题目
@@ -52,6 +114,37 @@ public class Solution{
 
 ## 动态规划-自上而下 [通过]
 ## 动态规划-自下而上 [通过]
+# [695. 岛屿的最大面积](https://leetcode-cn.com/problems/max-area-of-island/)
+## 方法一、深度优先搜索
+```cpp
+int max(int a,int b){
+    if(a>b)
+        return a;
+    return b;
+}
+int area(int** grid,int gridSize,int*gridColSize,int i,int j){
+    int x[4]={1,0,-1,0};
+    int y[4]={0,1,0,-1};
+    int areaAdd = 1; //FAO 初始化值!!!!;
+    //FAO 不加i,j判断,会造成在递归的时候越界!!!!!!!!!!
+    if(i < 0 || j < 0 || i == gridSize || j == *gridColSize || grid[i][j]==0) 
+        return 0;
+    grid[i][j]=0;
+    for(int k=0;k<4;k++){
+        areaAdd += area(grid,gridSize,gridColSize,i+x[k],j+y[k]);
+    }
+    return areaAdd;
+}
+int maxAreaOfIsland(int** grid, int gridSize, int* gridColSize){
+    int maxArea = 0;
+    for(int i=0;i<gridSize;i++){
+        for(int j=0;j<*gridColSize;j++){
+            maxArea = max(maxArea,area(grid,gridSize,gridColSize,i,j));
+        }
+    }
+    return maxArea;
+}
+```
 # [1013. 将数组分成和相等的三个部分](https://leetcode-cn.com/problems/partition-array-into-three-parts-with-equal-sum/)
 ## 题目
 给你一个整数数组 A，只有可以将其划分为三个和相等的非空部分时才返回 true，否则返回 false。  
