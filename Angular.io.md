@@ -475,7 +475,10 @@ export class MouseEnterSetbleDirective {
 ```
 
 ## [3.2 结构型指令](https://angular.cn/guide/structural-directives)
+```html
 
+
+```
 # 4 管道(Pipe)
 
 是一种把从后端获取的数据**转换格式**后显示到界面的途径.
