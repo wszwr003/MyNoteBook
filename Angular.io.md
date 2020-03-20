@@ -142,7 +142,7 @@ import { Output, EventEmitter } from "@angular/core"; //output component
 @Component({
   selector: "app-alerts",
   template: `
-    <button (click)="notify.emit()">Notify</button>
+    <button (click)="notify.emit()">Notify</button> //emit(value?: T)
     <!--output template-->
   `
 })
@@ -482,3 +482,10 @@ export class MouseEnterSetbleDirective {
 # 4 管道(Pipe)
 
 是一种把从后端获取的数据**转换格式**后显示到界面的途径.
+# [5 可观察对象(Observable)与RxJS](https://angular.cn/guide/observables)
+## [5.1 可观察对象(Observable)]
+## [5.3 Angular中的可观察对象]
+* EventEmitter 类派生自 Observable。
+* HTTP 模块使用可观察对象来处理 AJAX 请求和响应。
+* 路由器和表单模块使用可观察对象来监听对用户输入事件的响应。
+
