@@ -5,17 +5,20 @@
 ## __web__
 WEB frontend部分通过angular实现！
 1. angular
-   * bootstrap
+   * ~~bootstrap~~
+   * material
 ## __desktop__
 桌面端应用程序(win/mac/linux)，通过angular前端，封装到electron实现，通过rebuild，electron自带的nodejs库来实现本地硬件驱动。
 1. angular
-   * bootstrap
+   * ~~bootstrap~~
+   * material
 2. electron
    * serialport
    * sqlite
 ## __mobile__
-Android和IOS客户端APP，通过ionic框架实现，native功能通过cordova实现。
-1. ionic(基于angular)
+Android和IOS客户端APP，通过ionic框架实现，native功能通过cordova实现。  
+~~1. ionic(基于angular)~~  
+1. angular(能否不使用ionic)
 2. cordova
    * BLE
    * sqlite
