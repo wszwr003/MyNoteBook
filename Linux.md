@@ -63,3 +63,17 @@ The tool zip is mainly used in Windows , but is also available for Linux-based o
 `rpm –qi samba`  
 `yum remove –y samba`  
 `yum -y install samba samba-client`  
+# SCP传输
+* 拷贝本地文件到远程：  
+`scp -P 23333 filename.txt user@host:some/directory ` 
+* 拷贝远程文件夹到本地：    
+`scp -r user@host:directory/folder  ./directory`
+# FTP\SFTP\SCP区别
+FTP 基于TCP来传输文件，明文传输用户信息和数据。  
+SFTP 基于SSH来加密传输文件，可靠性高，可断点续传。  
+SCP 是基于SSH来加密拷贝文件，但要知道详细目录，不可断点续传。  
+# systemctl和service区别
+systemctl命令：是一个systemd工具，主要负责控制systemd系统和服务管理器。  
+service命令：可以启动、停止、重新启动和关闭系统服务，还可以显示所有系统服务的当前状态。  
+chkconfig命令：是管理系统服务(service)的命令行工具。所谓系统服务(service)，就是随系统启动而启动，随系统关闭而关闭的程序。  
+systemctl命令是service命令和chkconfig命令的集合和代替。  
