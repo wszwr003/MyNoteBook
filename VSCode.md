@@ -49,6 +49,8 @@ selected:`Ctrl+k Ctrl+F`
 `Disable ESLint`  
 * Markdown All in One
 PreView：`Ctrl+K V`
+## Clang on MacOS
+
 ## Debug
 **调试工具功能:**   
 典型的调试器通常能够在程序运行时拥有以下这些功能，例如单步运行（single-stepping）、利用中断点（breakpoint）使程序遇到各种种类的事件（event）时停止（breaking）（一般用于使程序停止在想要检查的状态）、以及追踪某些变量的变化。有些调试器也有能力在想要调试的程序在运行状态时，去改变它的状态，而不仅仅只是用来观察而己。  

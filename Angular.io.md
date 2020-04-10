@@ -488,4 +488,4 @@ export class MouseEnterSetbleDirective {
 * EventEmitter 类派生自 Observable。
 * HTTP 模块使用可观察对象来处理 AJAX 请求和响应。
 * 路由器和表单模块使用可观察对象来监听对用户输入事件的响应。
-
+# [AngularFlexLayout](https://juejin.im/post/5d33c74f5188253a2e1b8fb2)

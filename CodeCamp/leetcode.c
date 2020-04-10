@@ -7,6 +7,6 @@ int main(){
     printf("%d\n",5);
     printf("%d\n",6);
     printf("%d\n",7);
-    printf("%d\n",8);
-    printf("%d\n",9);
+    printf("%s\n","123");
+
 }
