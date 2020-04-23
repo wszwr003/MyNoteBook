@@ -82,13 +82,83 @@ california_housing_dataframe.describe()
 * 机器学习和数学统计密切相关,但是也有几个很重要的不同点:机器学习的数据集非常大,传统的统计分析无法实践,如贝叶斯分析.因此,机器学习用到很少的数学理论,经常以经验为依据.
 #### 1.1.3 Learning representations from data
 实现机器学习的必需要素:
-* 数据
-* 部分数据的标签(标准答案)
+* 数据.
+* 部分数据的标签(标准答案).
 * 一个衡量准确度的方法.  
-  
-TODO:content
+The central problem in machine learning:to learn useful representations of the input data at hand—representations that get us closer to the expected output. 
 #### 1.1.4 The 'deep' in deep learning
 * 深度学习不是指深度理解
+* what deep learning is, technically: a multistage way to learn data representa- tions.
+#### 1.1.5 Understanding how deep learning works, in three figures
+### 2 Before we begin: the mathematical building blocks of neural networks
+#### 2.1 A first look at a neural network
+```python
+# 1.The MNIST dataset comes preloaded in Keras, in the form of a set of four Numpy arrays.
+from keras.datasets import mnist
+(train_images, train_labels), (test_images, test_labels) = mnist.load_data()
+# 2.build the network
+from keras import models
+from keras import layers
+network = models.Sequential()
+network.add(layers.Dense(512, activation='relu', input_shape=(28 * 28,))) network.add(layers.Dense(10, activation='softmax'))
+# 3.To make the network ready for training, we need to pick three more things, as part of the compilation step:loss function,optimizer,metrics.
+of the compilation step:
+network.compile(optimizer='rmsprop', loss='categorical_crossentropy',
+                metrics=['accuracy'])
+# 4.reshape datas
+train_images = train_images.reshape((60000, 28 * 28)) train_images = train_images.astype('float32') / 255
+test_images = test_images.reshape((10000, 28 * 28)) test_images = test_images.astype('float32') / 255
+# 5.categorically encode the labels(explain in chapter 3)
+from keras.utils import to_categorical
+train_labels = to_categorical(train_labels)
+test_labels = to_categorical(test_labels)
+# 6.training
+network.fit(train_images, train_labels, epochs=5, batch_size=128)
+# 7.evaluating
+test_loss, test_acc = network.evaluate(test_images, test_labels)
+print('test_acc:', test_acc)
+```
+### 2.2 Data representations for neural networks
+* tensor
+  * 0D tensor(scalar) 常数,标量,无向性量,0维张量
+  * 1D tensor(vector) 向量,1维张量
+  * 2D tensor(matrix) 矩阵,2维张量
+  * 3D tensor(matrix) 3维张量,a cube of numbers
+```python
+>>> import numpy as np
+>>> x0 = np.array(12)
+>>> x1 = np.array([12, 3, 6, 14])
+>>> x2 = np.array([[5, 78, 2, 34, 0], [6, 79, 3, 35, 1],[7, 80, 4, 36, 2]])
+>>> x0.ndim x0.shape x0.dtype
+0 () unit8
+>>> x1.ndim x1.shape
+1 (4,)
+>>> x2.ndim x2.shape
+2 (3,5)
+```
+* 注意区分2维向量和2维张量说法的区别!!!
+* By packing 3D tensors in an array, you can create a 4D tensor, and so on. In deep learning, you’ll generally manipulate tensors that are 0D to 4D, although you may go up to 5D if you process video data.
+#### 2.2.5 Key attributes
+张量的构成属性:
+1. 维度
+2. 形状
+3. 数据类型
+#### 2.2.6 Manipulating tensors in Numpy
+* 可以用冒号“:”选取张量特定区域的数据!
+#### 2.2.7 The notion of data batches
+张量的第一个维度(first axis、axis 0、samples axis、samples dimension)通常叫做样品维度.
+深度学习模型通常不一次性处理全部数据集,而是,把数据分成一些小的批量!
+运用小批量处理的张量,the first axis is called the batch axis or batch dimension!
+#### 2.2.8 Real-world examples of data tensors
+实际运用中的张量举例
+* Vector data—2D tensors of shape(samples,features)
+* Timeseries data or sequence data—3D tensors of shape (samples, timesteps,
+features)
+* Images—4D tensors of shape(samples,height,width,channels)or(samples,
+channels, height, width)
+* Video —5D tensors of shape (samples, frames, height, width, channels) or
+(samples, frames, channels, height, width)
+#### 2.3 The gears of neural networks: tensor operations
 ## 5 Deep learning for computer vision  
 
 
