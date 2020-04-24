@@ -159,6 +159,45 @@ channels, height, width)
 * Video —5D tensors of shape (samples, frames, height, width, channels) or
 (samples, frames, channels, height, width)
 #### 2.3 The gears of neural networks: tensor operations
+* 介绍了relu全连接层(密度层、激活层)的原理,用到了三种张量操作符,点积、加法、relu
+```py
+keras.layers.Dense(512, activation='relu')
+# ||
+# VV
+output = relu(dot(W, input) + b) #relu(x) is max(x,0)
+```
+#### 2.3.1 Element-wise operations
+介绍了张量操作符的自适应大量平行操作功能及底层原理:for循环,以下为加法的底层实现:
+```py
+def naive_add(x, y):
+assert len(x.shape) == 2 assert x.shape == y.shape
+x = x.copy()
+for i in range(x.shape[0]):
+for j in range(x.shape[1]): x[i, j] += y[i, j]
+return x
+```
+#### 2.3.2 Broadcasting
+当两个张量的维度不同(形状不同)时也可以进行张量操作,这种特性叫做Broadcasting,以下为加法的底层实现:
+```py
+def naive_add_matrix_and_vector(x, y): assert len(x.shape) == 2
+assert len(y.shape) == 1
+assert x.shape[1] == y.shape[0]
+x = x.copy()
+for i in range(x.shape[0]):
+for j in range(x.shape[1]): x[i, j] += y[j]
+return x
+```
+#### 2.3.3 tensor dot 
+FAO:review
+TBS:__* 和 dot(数学上用‘.’)区别???__
+不同类型的的张量之间的点积底层实现!
+#### 2.3.4 tensor reshaping
+```py
+x =np.array([[0,1],[2,3],[4,5]]);
+x = x.reshape((6, 1);   #变换形状
+x = np.transpose(x);    #\对称变换
+```
+#### 2.3.5 Geometric interpretation of tensor operations
 ## 5 Deep learning for computer vision  
 
 
