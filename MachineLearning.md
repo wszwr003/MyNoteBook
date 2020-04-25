@@ -77,7 +77,7 @@ california_housing_dataframe.describe()
 ### 1.1 Artificial intelligence, machine learning, and deep learning
 * relationship: (Artificial intelligence(Machine Learning(Deep learning)))  
 * 50年代提出人工智能,从50年代到80年代,科学家们相信人工智能可以通过一系列基于常识的一系列复杂规则实现,called **symbolic** AI.
-* 虽然 **symbolic** AI可以姐姐很多好定义、逻辑性强的问题,如下棋,但是无法解决复杂和模糊不清的问题,如图像识别、语音识别、语言翻译.于是machine learning诞生了.  
+* 虽然 **symbolic** AI可以解决很多好定义、逻辑性强的问题,如下棋,但是无法解决复杂和模糊不清的问题,如图像识别、语音识别、语言翻译.于是machine learning诞生了.  
 ![ML](./src/newparadigm.png)
 * 机器学习和数学统计密切相关,但是也有几个很重要的不同点:机器学习的数据集非常大,传统的统计分析无法实践,如贝叶斯分析.因此,机器学习用到很少的数学理论,经常以经验为依据.
 #### 1.1.3 Learning representations from data
@@ -88,10 +88,10 @@ california_housing_dataframe.describe()
 The central problem in machine learning:to learn useful representations of the input data at hand—representations that get us closer to the expected output. 
 #### 1.1.4 The 'deep' in deep learning
 * 深度学习不是指深度理解
-* what deep learning is, technically: a multistage way to learn data representa- tions.
+* what deep learning is, technically: a multistage way to learn data representations.
 #### 1.1.5 Understanding how deep learning works, in three figures
-### 2 Before we begin: the mathematical building blocks of neural networks
-#### 2.1 A first look at a neural network
+## 2 Before we begin: the mathematical building blocks of neural networks
+### 2.1 A first look at a neural network
 ```python
 # 1.The MNIST dataset comes preloaded in Keras, in the form of a set of four Numpy arrays.
 from keras.datasets import mnist
@@ -123,7 +123,7 @@ print('test_acc:', test_acc)
   * 0D tensor(scalar) 常数,标量,无向性量,0维张量
   * 1D tensor(vector) 向量,1维张量
   * 2D tensor(matrix) 矩阵,2维张量
-  * 3D tensor(matrix) 3维张量,a cube of numbers
+  * 3D tensor 3维张量,a cube of numbers
 ```python
 >>> import numpy as np
 >>> x0 = np.array(12)
@@ -146,8 +146,8 @@ print('test_acc:', test_acc)
 #### 2.2.6 Manipulating tensors in Numpy
 * 可以用冒号“:”选取张量特定区域的数据!
 #### 2.2.7 The notion of data batches
-张量的第一个维度(first axis、axis 0、samples axis、samples dimension)通常叫做样品维度.
-深度学习模型通常不一次性处理全部数据集,而是,把数据分成一些小的批量!
+张量的第一个维度(first axis、axis 0、samples axis、samples dimension)通常叫做样品维度.  
+深度学习模型通常不一次性处理全部数据集,而是,把数据分成一些小的批量!  
 运用小批量处理的张量,the first axis is called the batch axis or batch dimension!
 #### 2.2.8 Real-world examples of data tensors
 实际运用中的张量举例
@@ -158,7 +158,7 @@ features)
 channels, height, width)
 * Video —5D tensors of shape (samples, frames, height, width, channels) or
 (samples, frames, channels, height, width)
-#### 2.3 The gears of neural networks: tensor operations
+### 2.3 The gears of neural networks: tensor operations
 * 介绍了relu全连接层(密度层、激活层)的原理,用到了三种张量操作符,点积、加法、relu
 ```py
 keras.layers.Dense(512, activation='relu')
@@ -189,7 +189,7 @@ return x
 ```
 #### 2.3.3 tensor dot 
 FAO:review
-TBS:__* 和 dot(数学上用‘.’)区别???__
+TBS:__* 和 dot(数学上用‘.’)区别???__  
 不同类型的的张量之间的点积底层实现!
 #### 2.3.4 tensor reshaping
 ```py
@@ -198,6 +198,74 @@ x = x.reshape((6, 1);   #变换形状
 x = np.transpose(x);    #\对称变换
 ```
 #### 2.3.5 Geometric interpretation of tensor operations
+张量操作的几何学解释:把复杂的数据及通过层层转换成有规律的数据.
+### 2.4 The engine of neural networks:gradient-based optimization
+训练的过程:
+1. 选取一个批量的样本数据,和相应的标签
+2. 运行样本数据计算各个的预测值
+3. 通过标签和预测值计算loss
+4. 更新weights降低loss  
+
+关键在实现第四部,一个笨办法是固定除了一个weight以外的所有weights,轮流调节weight达到最小的loss,但是不现实!  
+可行的办法:计算梯度,往负梯度方向取值,以降低loss
+#### 2.4.1 导数
+#### 2.4.2 张量的导数:梯度
+#### 2.4.3 随机梯度下降
+通过梯度下降方法更新的训练过程:  
+1. Draw a batch of training samples x and corresponding targets y.
+2. Run the network on x to obtain predictions y_pred.
+3. Compute the loss of the network on the batch, a measure of the mismatch
+between y_pred and y.
+4. Compute the gradient of the loss with regard to the network’s parameters (a
+backward pass).
+5. Move the parameters a little in the opposite direction from the gradient—for
+example W -= step * gradient—thus reducing the loss on the batch a bit. 
+
+difference between: **batch SGD** -- **mini-batch SGD** -- **SGD**  
+其他的SGD变种,不仅仅查看当前梯度来更新权重,还将考虑之前的权重,最具代表性的就是考虑动量,它可以解决收敛速度和局部最小值的问题:there exist multiple variants of SGD that differ by taking into account previous weight updates when computing the next weight update, rather than just looking at the current value of the gradients. There is, for instance, SGD with momen- tum, as well as Adagrad, RMSProp, and several others. Such variants are known as opti- mization methods or optimizers. In particular, the concept of momentum, which is used in many of these variants, deserves your attention. Momentum addresses two issues with SGD: convergence speed and local minima. 
+![global minimum](./src/globalminimum.png)
+#### 2.4.4  Chaining derivatives: the Backpropagation algorithm
+链式法则: f'(x) = f'(g(x)) * g'(x)  
+TBS:反向传播、反转模式微分: Applying the chain rule to the computation of the gradient values of a neural network gives rise to an algorithm called Backpropagation (also sometimes called reverse-mode differentiation).  
+TBS:symbolic differentiation 符号微分
+### 2.5 Looking back our first example
+```py
+#input data
+(train_images, train_labels), (test_images, test_labels) = mnist.load_data()
+train_images = train_images.reshape((60000, 28 * 28)) 
+train_images = train_images.astype('float32') / 255
+test_images = test_images.reshape((10000, 28 * 28)) 
+test_images = test_images.astype('float32') / 255
+#neural network
+network = models.Sequential()
+network.add(layers.Dense(512, activation='relu', input_shape=(28 * 28,))) 
+network.add(layers.Dense(10, activation='softmax'))
+#network compilation
+network.compile(optimizer='rmsprop', loss='categorical_crossentropy', metrics=['accuracy'])
+#training
+network.fit(train_images, train_labels, epochs=5, batch_size=128)
+```
+## 3 Getting started with neural networks
+三个例子,二元分类、多元分类、数值回归:
+* Classifying movie reviews as positive or negative (binary classification) 
+* Classifying news wires by topic (multiclass classification)
+* Estimating the price of a house, given real-estate data (regression)
+### 3.1 Anatomy of a neural network
+combination of neural networks:
+1. datas.
+2. layers that combine into a network(model).
+3. loss functions.
+4. optimizer.
+![deeplearningmodel](./src/deeplearningmodel.png)
+#### 3.1.1 layers: the building blocks of deep learning 
+
+#### 3.1.2 models
+
+#### 3.1.3 loss functions and optimizers
+#### 3.2 keras
+![keras](./src/keras.png)
 ## 5 Deep learning for computer vision  
+
+
 
 
