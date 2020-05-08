@@ -20,58 +20,74 @@
 ### Gradient Descent
 ![Loss Chart!](./src/losschart.png)
 ### Learning Rate
-best learn rate!
+also sometimes called step size
+### Stochastic Gradient Descent
+
 ## First Steps with TF  
 ![TensorFlow toolkit hierarchy!](./src/tf-hierarchy.png)
 ### TF Progarmming Exercise
+python的list和np.array的区别:list可以存放不同类型的数据,并且是指针,而且没有ndim、shape、dtype等属性.
+* NumPy
+  NumPy is a Python library for creating and manipulating vectors and matrices. 
+  ```python
+  import numpy as np
+  one_dimensional_array = np.array([1.2, 2.4, 3.5, 4.7, 6.1, 7.2, 8.3, 9.5])
+  two_dimensional_array = np.array([[6, 5], [11, 7], [4, 8]])
+  #整数序列
+  sequence_of_integers = np.arange(5, 12)  # => [ 5  6  7  8  9 10 11]
+  #随机整数50-100的array,长度6
+  random_integers_between_50_and_100 = np.random.randint(low=50, high=101, size=(6))
+  #随机浮点数0-1的array,长度6
+  random_floats_between_0_and_1 = np.random.random([6])
+  ```
 * pandas  
-    是一种数据分析API  
-    ```python
-    from __future__ import print_function
-    import pandas as pd
-    import numpy as np
-    pd.__version__
+  是一种数据分析API  
+  ```python
+  from __future__ import print_function
+  import pandas as pd
+  import numpy as np
+  pd.__version__
 
-    california_housing_dataframe = pd.read_csv("https://download.mlcc.google.cn/mledu-datasets/california_housing_train.csv", sep=",")
-    california_housing_dataframe.describe()
-    california_housing_dataframe.head()
-    california_housing_dataframe.hist('housing_median_age')
+  california_housing_dataframe = pd.read_csv("https://download.mlcc.google.cn/mledu-datasets/california_housing_train.csv", sep=",")
+  california_housing_dataframe.describe()
+  california_housing_dataframe.head()
+  california_housing_dataframe.hist('housing_median_age')
 
-    city_names = pd.Series(['San Francisco', 'San Jose', 'Sacramento'])
-    population = pd.Series([852469, 1015785, 485199])
-    citys = pd.DataFrame({ 'City name': city_names, 'Population': population})
-    print(type(cities['City name']))
-    cities['City name']
-    population / 1000.
-    np.log(population)
-    population.apply(lambda val: val > 1000000)
-    ```
+  city_names = pd.Series(['San Francisco', 'San Jose', 'Sacramento'])
+  population = pd.Series([852469, 1015785, 485199])
+  citys = pd.DataFrame({ 'City name': city_names, 'Population': population})
+  print(type(cities['City name']))
+  cities['City name']
+  population / 1000.
+  np.log(population)
+  population.apply(lambda val: val > 1000000)
+  ```
 * first steps with tensorflow  
-```python
-from __future__ import print_function
-import math
-from IPython import display
-from matplotlib import cm
-from matplotlib import gridspec
-from matplotlib import pyplot as plt
-import numpy as np
-import pandas as pd
-from sklearn import metrics
-%tensorflow_version 1.x
-import tensorflow as tf
-from tensorflow.python.data import Dataset
+  ```python
+  from __future__ import print_function
+  import math
+  from IPython import display
+  from matplotlib import cm
+  from matplotlib import gridspec
+  from matplotlib import pyplot as plt
+  import numpy as np
+  import pandas as pd
+  from sklearn import metrics
+  %tensorflow_version 1.x
+  import tensorflow as tf
+  from tensorflow.python.data import Dataset
 
-tf.logging.set_verbosity(tf.logging.ERROR)
-pd.options.display.max_rows = 10
-pd.options.display.float_format = '{:.1f}'.format
+  tf.logging.set_verbosity(tf.logging.ERROR)
+  pd.options.display.max_rows = 10
+  pd.options.display.float_format = '{:.1f}'.format
 
-california_housing_dataframe = pd.read_csv("https://download.mlcc.google.cn/mledu-datasets/california_housing_train.csv", sep=",")
+  california_housing_dataframe = pd.read_csv("https://download.mlcc.google.cn/mledu-datasets/california_housing_train.csv", sep=",")
 
-california_housing_dataframe = california_housing_dataframe.reindex(np.random.permutation(california_housing_dataframe.index))
-california_housing_dataframe["median_house_value"] /= 1000.0
-california_housing_dataframe
-california_housing_dataframe.describe()
-```
+  california_housing_dataframe = california_housing_dataframe.reindex(np.random.permutation(california_housing_dataframe.index))
+  california_housing_dataframe["median_house_value"] /= 1000.0
+  california_housing_dataframe
+  california_housing_dataframe.describe()
+  ```
 # BOOK:Deep Learning with Python
 ## 1. what is deep learning?
 ### 1.1 Artificial intelligence, machine learning, and deep learning
@@ -221,7 +237,7 @@ backward pass).
 5. Move the parameters a little in the opposite direction from the gradient—for
 example W -= step * gradient—thus reducing the loss on the batch a bit. 
 
-difference between: **batch SGD** -- **mini-batch SGD** -- **SGD**  
+difference between: **SGD(single sample)** --> **mini-batch SGD(10-1000)** --> **batch SGD(all)**   
 其他的SGD变种,不仅仅查看当前梯度来更新权重,还将考虑之前的权重,最具代表性的就是考虑动量,它可以解决收敛速度和局部最小值的问题:there exist multiple variants of SGD that differ by taking into account previous weight updates when computing the next weight update, rather than just looking at the current value of the gradients. There is, for instance, SGD with momen- tum, as well as Adagrad, RMSProp, and several others. Such variants are known as opti- mization methods or optimizers. In particular, the concept of momentum, which is used in many of these variants, deserves your attention. Momentum addresses two issues with SGD: convergence speed and local minima. 
 ![global minimum](./src/globalminimum.png)
 #### 2.4.4  Chaining derivatives: the Backpropagation algorithm
@@ -252,7 +268,7 @@ network.fit(train_images, train_labels, epochs=5, batch_size=128)
 * Estimating the price of a house, given real-estate data (regression)
 ### 3.1 Anatomy of a neural network
 combination of neural networks:
-1. datas.
+1. datas with labels.
 2. layers that combine into a network(model).
 3. loss functions.
 4. optimizer.
@@ -262,8 +278,99 @@ combination of neural networks:
 #### 3.1.2 models
 
 #### 3.1.3 loss functions and optimizers
+1.  Loss function (objective function)—The quantity that will be minimized during training. It represents a measure of success for the task at hand.
+2.  Optimizer—Determines how the network will be updated based on the loss func- tion. It implements a specific variant of stochastic gradient descent (SGD).
+* the importance of choosing the Loss function
 #### 3.2 keras
 ![keras](./src/keras.png)
+#### 3.3 Setting up a deep-learning workstation
+#### 3.4 Classifying movie reviews: a binary classification example
+```python
+# 把评论的整数字典索引序列还原为评论
+from keras.datasets import imdb
+(train_data, train_labels), (test_data, test_labels) = imdb.load_data( num_words=10000)
+max([max(sequence) for sequence in train_data])
+word_index = imdb.get_word_index()
+reverse_word_index = dict([(value, key) for (key, value) in word_index.items()])
+decoded_review = ' '.join([reverse_word_index.get(i - 3, '?') for i in train_data[0]])
+print(decoded_review)
+
+import numpy as np
+# 函数:把评论的整数字典索引序列转换为一个10000维的0,1张量
+def vectorize_sequences(sequences, dimension=10000): 
+  results = np.zeros((len(sequences), dimension)) 
+  for i, sequence in enumerate(sequences):
+    results[i, sequence] = 1. 
+  return results
+# 对训练和测试数据进行张量转换
+x_train = vectorize_sequences(train_data)
+x_test = vectorize_sequences(test_data)
+y_train = np.asarray(train_labels).astype('float32') 
+y_test = np.asarray(test_labels).astype('float32')
+print("Raw train data:",train_data.ndim,train_data.shape ,train_data.dtype)
+print("Array train data:",x_train.ndim,x_train.shape ,x_train.dtype)
+print("Raw test data:",test_data.ndim,test_data.shape ,test_data.dtype)
+print("Array test data:",x_test.ndim,x_test.shape ,x_test.dtype)
+print("Raw train labels:",train_labels.ndim,train_labels.shape ,train_labels.dtype)
+print("Array train labels:",y_train.ndim,y_train.shape ,y_train.dtype)
+print("Raw test labels:",test_labels.ndim,test_labels.shape ,test_labels.dtype)
+print("Array test labels:",y_test.ndim,y_test.shape ,y_test.dtype)
+# 创建一个3层的深度学习模型
+from keras import models
+from keras import layers
+model = models.Sequential()
+model.add(layers.Dense(16, activation='relu', input_shape=(10000,))) 
+model.add(layers.Dense(16, activation='relu')) 
+model.add(layers.Dense(1, activation='sigmoid'))
+
+# 把训练集分成训练集和验证集两部分=>
+x_val = x_train[:10000]
+y_val = y_train[:10000]
+partial_x_train = x_train[10000:]
+partial_y_train = y_train[10000:]
+print("x_val data:",x_val.ndim,x_val.shape ,x_val.dtype)
+print("x_train data:",x_train.ndim,x_train.shape ,x_train.dtype)
+# 编译生成模型,设定优化器、损失函数、评价标准.
+model.compile(optimizer='rmsprop', loss='binary_crossentropy',
+              metrics=['acc'])
+# SGD随机梯度下降方法,训练模型=>
+history = model.fit(partial_x_train, partial_y_train,
+                    epochs=20,
+                    batch_size=512,
+                    validation_data=(x_val, y_val))
+history_dict = history.history
+history_dict.keys()
+
+# 训练集和验证集的损失函数图表
+import matplotlib.pyplot as plt
+history_dict = history.history
+loss_values = history_dict['loss'] 
+acc_values = history_dict['acc'] 
+val_loss_values = history_dict['val_loss']
+epochs = range(1, len(acc_values) + 1)
+plt.plot(epochs, loss_values, 'bo', label='Training loss')
+plt.plot(epochs, val_loss_values, 'b', label='Validation loss')
+plt.title('Training and validation loss') 
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+plt.show()
+
+# 训练集和验证集的准确度函数图表
+plt.clf()
+acc_values = history_dict['acc'] 
+val_acc_values = history_dict['val_acc']
+plt.plot(epochs, acc_values, 'bo', label='Training acc') 
+plt.plot(epochs, val_acc_values, 'b', label='Validation acc') 
+plt.title('Training and validation accuracy') 
+plt.xlabel('Epochs')
+plt.ylabel('Loss') 
+plt.legend()
+plt.show()
+
+# 使用模型对测试集预测=>
+model.predict(x_test)
+```
 ## 5 Deep learning for computer vision  
 
 
