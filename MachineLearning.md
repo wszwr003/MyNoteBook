@@ -76,6 +76,10 @@ python的list和np.array的区别:list可以存放不同类型的数据,并且�
   print(my_dataframe[1:4], '\n')
   # Column 'temperature'
   print(my_dataframe['temperature'])
+  # 引用数据-共享一个数据
+  reference_to_my_dataframe  =  my_dataframe
+  # 复制数据-不相关
+  copy_of_my_dataframe = my_dataframe.copy()
   ```
   ```python
   #老版本教程
