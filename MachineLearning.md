@@ -43,6 +43,42 @@ python的list和np.array的区别:list可以存放不同类型的数据,并且�
 * pandas  
   是一种数据分析API  
   ```python
+  #2020年教程
+  import numpy as np
+  import pandas as pd
+  my_data = np.array([[0, 3], [10, 7], [20, 9], [30, 14], [40, 15]])
+  # Create a Python list that holds the names of the two columns.
+  my_column_names = ['temperature', 'activity']
+  # Create a DataFrame.
+  my_dataframe = pd.DataFrame(data=my_data, columns=my_column_names)
+  print(my_dataframe)
+  # =>    temperature  activity
+  # => 0            0         3
+  # => 1           10         7
+  # => 2           20         9
+  # => 3           30        14
+  # => 4           40        15
+  # Create a new column named combo.
+  my_dataframe["adjusted"] = my_dataframe["activity"] + 2
+  # Print the entire DataFrame
+  print(my_dataframe)
+  # =>    temperature  activity  adjusted
+  # => 0            0         3         5
+  # => 1           10         7         9
+  # => 2           20         9        11
+  # => 3           30        14        16
+  # => 4           40        15        17
+  # Rows #0, #1, and #2
+  print(my_dataframe.head(3), '\n')
+  # Row #2
+  print(my_dataframe.iloc[[2]], '\n')
+  # Rows #1, #2, and #3
+  print(my_dataframe[1:4], '\n')
+  # Column 'temperature'
+  print(my_dataframe['temperature'])
+  ```
+  ```python
+  #老版本教程
   from __future__ import print_function
   import pandas as pd
   import numpy as np
