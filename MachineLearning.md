@@ -128,11 +128,39 @@ python的list和np.array的区别:list可以存放不同类型的数据,并且�
   california_housing_dataframe
   california_housing_dataframe.describe()
   ```
-# BOOK:Deep Learning with Python
+## 泛化
+## 训练集和测试集ß
+## 验证集(Validation)
+如果经常用测试集来验证模型,可能会出现在不自觉的拟合了测试集的情况,需要引入验证集的概念.
+![validation](./src/Validation.svg)
+# [图像分类实践课程](https://developers.google.com/machine-learning/practica/image-classification)
+## 卷积神经网络
+卷积神经网络 (CNN) 可用于逐步提取越来越高级别的图像内容表示结果,CNN 包括多个模块，每个模块执行三个操作:
+1. 卷积  
+  卷积会提取输入特征图的图块，并向这些图块应用过滤器以计算新特征，生成输出特征图（也称为“卷积特征”，大小和深度可能与输入特征图的不同）。卷积由以下两个参数定义：
+   * 所提取图块的大小（通常为 3x3 或 5x5 像素）。  
+   * 输出特征图的深度，对应于应用的过滤器数量。  
+  ![Convolution](./src/convolution_overview.gif)
+  图 在 5x5 输入特征图（深度为 1）上执行 3x3 卷积（深度也为 1）。在 5x5 特征图中，可以提取图块的 3x3 位置有 9 个，因此该卷积会生成一个 3x3 输出特征图。
+2. ReLU激活
+  每次执行卷积运算后，CNN 都会向卷积特征应用修正线性单元 (ReLU) 转换，以便将非线性规律引入模型中。ReLU 函数 F(x) = max(0,x) 会针对 x > 0 的所有值返回 x，针对 x ≤ 0 的所有值返回 0。
+3. 池化  
+  ReLU 之后是池化步骤，即 CNN 会降低卷积特征的采样率（以节省处理时间），从而减少特征图的维数，同时仍保留最关键的特征信息。此过程常用的算法称为最大池化。  
+  最大池化采用的运算方式与卷积的运算方式类似。我们在特征图上滑动并提取指定大小的图块。对于每个图块，最大值会输出到新的特征图，所有其他值都被舍弃。最大池化运算采用以下两个参数：  
+   * 最大池化过滤器的大小（通常为 2x2 像素）
+   * 步长：各提取图块间隔的距离（以像素为单位）。最大池化与卷积不同：在执行卷积期间，过滤器在特征图上逐个像素滑动，而在最大池化过程中，步长会确定每个图块的提取位置。对于 2x2 过滤器，距离为 2 的步长表示最大池化运算将从特征图中提取所有非重叠 2x2 图块:
+  ![maxpool](./src/maxpool_animation.gif)  
+
+### 全连接层
+卷积神经网络的末端是一个或多个全连接层（当两个层“完全连接”时，第一层中的每个节点都与第二层中的每个节点相连）。全连接层的作用是根据卷积提取的特征进行分类。通常，最后的全连接层会包含一个 softmax 激活函数，该函数会针对模型尝试预测的每个分类标签输出一个概率值（范围为：0-1）。
+### 图像识别模型
+![cnn](./src/cnn_architecture.svg)
+图 上图中显示的 CNN 包含两个用于提取特征的卷积模块（卷积 + ReLU + 池化）和两个用于分类的全连接层。其他 CNN 可能包含更多或更少的卷积模块和全连接层。工程师会经常进行试验，以便为模型找出可产生最佳结果的配置。
+#  [BOOK:Deep Learning with Python]()
 ## 1. what is deep learning?
 ### 1.1 Artificial intelligence, machine learning, and deep learning
 * relationship: (Artificial intelligence(Machine Learning(Deep learning)))  
-* 50年代提出人工智能,从50年代到80年代,科学家们相信人工智能可以通过一系列基于常识的一系列复杂规则实现,called **symbolic** AI.
+* 50年代提出人工智能,从50年代到80年代,科学家们相信人工智能可以通过一系列基于常识的一系列复杂规则实现,called **symbolic** AI.ß
 * 虽然 **symbolic** AI可以解决很多好定义、逻辑性强的问题,如下棋,但是无法解决复杂和模糊不清的问题,如图像识别、语音识别、语言翻译.于是machine learning诞生了.  
 ![ML](./src/newparadigm.png)
 * 机器学习和数学统计密切相关,但是也有几个很重要的不同点:机器学习的数据集非常大,传统的统计分析无法实践,如贝叶斯分析.因此,机器学习用到很少的数学理论,经常以经验为依据.
@@ -148,52 +176,52 @@ The central problem in machine learning:to learn useful representations of the i
 #### 1.1.5 Understanding how deep learning works, in three figures
 ## 2 Before we begin: the mathematical building blocks of neural networks
 ### 2.1 A first look at a neural network
-```python
-# 1.The MNIST dataset comes preloaded in Keras, in the form of a set of four Numpy arrays.
-from keras.datasets import mnist
-(train_images, train_labels), (test_images, test_labels) = mnist.load_data()
-# 2.build the network
-from keras import models
-from keras import layers
-network = models.Sequential()
-network.add(layers.Dense(512, activation='relu', input_shape=(28 * 28,))) network.add(layers.Dense(10, activation='softmax'))
-# 3.To make the network ready for training, we need to pick three more things, as part of the compilation step:loss function,optimizer,metrics.
-of the compilation step:
-network.compile(optimizer='rmsprop', loss='categorical_crossentropy',
-                metrics=['accuracy'])
-# 4.reshape datas
-train_images = train_images.reshape((60000, 28 * 28)) train_images = train_images.astype('float32') / 255
-test_images = test_images.reshape((10000, 28 * 28)) test_images = test_images.astype('float32') / 255
-# 5.categorically encode the labels(explain in chapter 3)
-from keras.utils import to_categorical
-train_labels = to_categorical(train_labels)
-test_labels = to_categorical(test_labels)
-# 6.training
-network.fit(train_images, train_labels, epochs=5, batch_size=128)
-# 7.evaluating
-test_loss, test_acc = network.evaluate(test_images, test_labels)
-print('test_acc:', test_acc)
-```
+  ```python
+  # 1.The MNIST dataset comes preloaded in Keras, in the form of a set of four Numpy arrays.
+  from keras.datasets import mnist
+  (train_images, train_labels), (test_images, test_labels) = mnist.load_data()
+  # 2.build the network
+  from keras import models
+  from keras import layers
+  network = models.Sequential()
+  network.add(layers.Dense(512, activation='relu', input_shape=(28 * 28,))) network.add(layers.Dense(10, activation='softmax'))
+  # 3.To make the network ready for training, we need to pick three more things, as part of the compilation step:loss function,optimizer,metrics.
+  of the compilation step:
+  network.compile(optimizer='rmsprop', loss='categorical_crossentropy',
+                  metrics=['accuracy'])
+  # 4.reshape datas
+  train_images = train_images.reshape((60000, 28 * 28)) train_images = train_images.astype('float32') / 255
+  test_images = test_images.reshape((10000, 28 * 28)) test_images = test_images.astype('float32') / 255
+  # 5.categorically encode the labels(explain in chapter 3)
+  from keras.utils import to_categorical
+  train_labels = to_categorical(train_labels)
+  test_labels = to_categorical(test_labels)
+  # 6.training
+  network.fit(train_images, train_labels, epochs=5, batch_size=128)
+  # 7.evaluating
+  test_loss, test_acc = network.evaluate(test_images, test_labels)
+  print('test_acc:', test_acc)
+  ```
 ### 2.2 Data representations for neural networks
-* tensor
-  * 0D tensor(scalar) 常数,标量,无向性量,0维张量
-  * 1D tensor(vector) 向量,1维张量
-  * 2D tensor(matrix) 矩阵,2维张量
-  * 3D tensor 3维张量,a cube of numbers
-```python
->>> import numpy as np
->>> x0 = np.array(12)
->>> x1 = np.array([12, 3, 6, 14])
->>> x2 = np.array([[5, 78, 2, 34, 0], [6, 79, 3, 35, 1],[7, 80, 4, 36, 2]])
->>> x0.ndim x0.shape x0.dtype
-0 () unit8
->>> x1.ndim x1.shape
-1 (4,)
->>> x2.ndim x2.shape
-2 (3,5)
-```
-* 注意区分2维向量和2维张量说法的区别!!!
-* By packing 3D tensors in an array, you can create a 4D tensor, and so on. In deep learning, you’ll generally manipulate tensors that are 0D to 4D, although you may go up to 5D if you process video data.
+  * tensor
+    * 0D tensor(scalar) 常数,标量,无向性量,0维张量
+    * 1D tensor(vector) 向量,1维张量
+    * 2D tensor(matrix) 矩阵,2维张量
+    * 3D tensor 3维张量,a cube of numbers
+  ```python
+  >>> import numpy as np
+  >>> x0 = np.array(12)
+  >>> x1 = np.array([12, 3, 6, 14])
+  >>> x2 = np.array([[5, 78, 2, 34, 0], [6, 79, 3, 35, 1],[7, 80, 4, 36, 2]])
+  >>> x0.ndim x0.shape x0.dtype
+  0 () unit8
+  >>> x1.ndim x1.shape
+  1 (4,)
+  >>> x2.ndim x2.shape
+  2 (3,5)
+  ```
+  * 注意区分2维向量和2维张量说法的区别!!!
+  * By packing 3D tensors in an array, you can create a 4D tensor, and so on. In deep learning, you’ll generally manipulate tensors that are 0D to 4D, although you may go up to 5D if you process video data.
 #### 2.2.5 Key attributes
 张量的构成属性:
 1. 维度
