@@ -7,7 +7,8 @@
 | 显示桌面   | `F11`                 |
 | 选区截屏   | `Shift` `Command` `4` |
 | 截屏或录制 | `Shift` `Command` `5` |
-
+| 访达显示隐藏文件| `Shift` `Command` `.` |
+| iTerm全局Select | `Command` `h` |
 ## Linux 常用命令
 
 | 功能 | 命令 | 说明 |
