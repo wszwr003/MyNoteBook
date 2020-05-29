@@ -59,3 +59,55 @@
 ### 9.1.4 题目
 
 ## 9.2 链表
+
+```java
+class Node{
+  Node next = null;
+  int data;
+  public Node(int data){
+    this.data = data;
+  }
+  public appendToTail(int data){
+    Node nodeNew = new Node(data);//不会销毁?
+    Node curr = this;  //this is link head
+    while(curr.next != null){
+      curr = curr.next;
+    }
+    curr.next = end;
+  }
+}
+```
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node{
+  int data;
+  struct node* next;
+};
+void appendToTail(struct node* head,int data){
+  struct node* curr = head;
+  struct node* nodeNew = (struct node*)malloc(sizeof(struct node));
+  nodeNew->data = data;
+  nodeNew->next = NULL;
+  while(curr->next!=NULL){
+    curr = curr->next;
+  }
+  curr->next = nodeNew;
+}
+void traverseList(struct node* head){
+  struct node* p = head->next;
+  while(p != NULL){
+    printf("%d\n",p->data);
+    p = p->next;
+  }
+}
+int main(){
+  struct node* head=(struct node*)malloc(sizeof(struct node));//FAO:为什么需要分配空间?
+  head->data = 0;
+  head->next = NULL;
+  appendToTail(head,1);
+  appendToTail(head,2);
+  traverseList(head);
+}
+```
