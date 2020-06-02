@@ -107,6 +107,10 @@ linux:`netstat -nlp | grep LISTEN`
 
 ![memory](./src/memory_layout.pdf.jpg)
 
+## 虚拟内存技术
+
+[PDF](./src/虚拟内存.pdf)
+
 ## 不同数据类型的字长取决于编译器
 
 [WIKI 64-bit data models](https://en.wikipedia.org/wiki/64-bit_computing#64-bit_data_models)  
