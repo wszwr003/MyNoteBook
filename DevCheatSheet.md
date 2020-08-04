@@ -2,13 +2,14 @@
 
 ## MAC 常用快捷键
 
-| 功能说明   | 快捷键                |
-| ---------- | --------------------- |
-| 显示桌面   | `F11`                 |
-| 选区截屏   | `Shift` `Command` `4` |
-| 截屏或录制 | `Shift` `Command` `5` |
-| 访达显示隐藏文件| `Shift` `Command` `.` |
-| iTerm全局Select | `Command` `h` |
+| 功能说明          | 快捷键                |
+| ----------------- | --------------------- |
+| 显示桌面          | `F11`                 |
+| 选区截屏          | `Shift` `Command` `4` |
+| 截屏或录制        | `Shift` `Command` `5` |
+| 访达显示隐藏文件  | `Shift` `Command` `.` |
+| iTerm 全局 Select | `Command` `h`         |
+
 ## Linux 常用命令
 
 | 功能 | 命令 | 说明 |
@@ -22,8 +23,8 @@
 | MAC 查看所有监听端口 | `netstat -AaLlnW` |  |
 | 查看 MAC/Linux 内核版本 | `uname -a;` | 备用:<br> `cat /proc/version;` |
 | 查看 Linux 发行版本 | `cat /etc/issue;` | 备用:<br> `lsb_release -a;` <br> `cat /etc/redhat-release;` |
-| SCP 文件发送 | `scp -P 22 -r ./filename hostname@remote:some/directory` | -P: 表示 port |
-| SCP 文件获取 | `scp -P 22 -r hostname@remote:some/directory ./` | -r: 表示递归目录 |
+| SCP 文件发送 | `scp -P 22 -r ./filename hostname@remoteip:some/directory` | -P: 表示 port |
+| SCP 文件获取 | `scp -P 22 -r hostname@remoteip:some/directory ./` | -r: 表示递归目录 |
 
 ## Visual Studio Code 常用快捷键
 
