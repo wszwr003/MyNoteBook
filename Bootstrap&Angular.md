@@ -8,7 +8,7 @@ npm install --save jquery popper bootstrap
 
 ## step2:
 
-```
+```json
 //angular.json
 "styles": [
   "src/styles.scss",
