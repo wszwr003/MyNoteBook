@@ -25,6 +25,7 @@
 | 查看 Linux 发行版本 | `cat /etc/issue;` | 备用:<br> `lsb_release -a;` <br> `cat /etc/redhat-release;` |
 | SCP 文件发送 | `scp -P 22 -r ./filename hostname@remoteip:some/directory` | -P: 表示 port |
 | SCP 文件获取 | `scp -P 22 -r hostname@remoteip:some/directory ./` | -r: 表示递归目录 |
+| 链接 | `ln [option] source_file dist_file` | -f 建立时将同档案删除<br>-i 删除前进行询问<br>-s 建立软链接 |
 
 ## Visual Studio Code 常用快捷键
 
