@@ -30,7 +30,7 @@ _斜体_
 **_斜粗体_**  
 **_~~斜粗体删除线~~_**
 
-![picture if failed desplay](./src/git_status_sequence.png)
+![picture if failed desplay](./assets/git_status_sequence.png)
 
 [百度](http://baidu.com "悬停显示")
 

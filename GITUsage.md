@@ -4,7 +4,7 @@
 
 在 Windows 上安装 Git 也有几种安装方法。 官方版本可以在 Git 官方网站下载。 打开  https://git-scm.com/download/win 下载会自动开始。
 
-- 下载安装完成后输入`git --version`检查是否安装成功： ![gitversion](./src/GITUsage/gitversion.png)
+- 下载安装完成后输入`git --version`检查是否安装成功： ![gitversion](./assets/GITUsage/gitversion.png)
 - 初次安装后配置 git 用户名和邮箱：
 
 ```
@@ -45,4 +45,4 @@ $ git config --global user.email "youremail@example.com"
 
 ### 基本命令检索
 
-![gitcheatsheel1](./src/GITUsage/gitcheat1.png) ![gitcheatsheel2](./src/GITUsage/gitcheat2.png)
+![gitcheatsheel1](./assets/GITUsage/gitcheat1.png) ![gitcheatsheel2](./assets/GITUsage/gitcheat2.png)

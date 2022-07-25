@@ -105,11 +105,11 @@ linux:`netstat -nlp | grep LISTEN`
 
 ## [计算机程序执行的内存分区](https://en.wikipedia.org/wiki/Data_segment)
 
-![memory](./src/memory_layout.pdf.jpg)
+![memory](./assets/memory_layout.pdf.jpg)
 
 ## 虚拟内存技术
 
-[PDF](./src/虚拟内存.pdf)
+[PDF](./assets/虚拟内存.pdf)
 
 ## 不同数据类型的字长取决于编译器
 
